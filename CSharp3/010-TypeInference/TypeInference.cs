@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using CSharp3.Support.Linq;
 
-namespace CSharp3
+namespace CSharp3.TypeInference
 {
     [TestFixture]
     public class TypeInference

@@ -3,10 +3,10 @@ using System.Linq;
 using NUnit.Framework;
 using CSharp3.Support.Linq;
 
-namespace CSharp3
+namespace CSharp3.Linq.ExtensionMethods
 {
     [TestFixture]
-    public class LinqWithExtentionMethods
+    public class WithExtentionMethods
     {
         [Test]
         public void WhereFiltersStuffForYou()
@@ -18,14 +18,14 @@ namespace CSharp3
         [Test]
         public void SelectTransformsSequences()
         {
-            var squaresFrom1To10 = Enumerable.Range(1, 10).Select(x => x ^ 2);
+            var squaresFrom1To10 = Enumerable.Range(1, 10).Select(x => x * x);
             squaresFrom1To10.ForEach(Console.WriteLine);
         }
 
         [Test]
         public void ShouldEnableYouToDoThingsInWaysThatMaySurpriseYou()
         {
-            Func<int, int> square = x => x*x;
+            Func<int, int> square = x => x * x;
             var sumOfSquares = Enumerable.Range(0, 10).Select(square).Sum();
             Console.WriteLine(sumOfSquares);
         }
