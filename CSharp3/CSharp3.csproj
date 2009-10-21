@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="010-TypeInference\TypeInference.cs" />
+    <Compile Include="070-LambdaExpressions\101-Closures.cs" />
     <Compile Include="080Linq\ExtensionMethods\010-WithExtentionMethods.cs" />
+    <Compile Include="080Linq\ExtensionMethods\DeferredExecution.cs" />
     <Compile Include="Support\Linq\LinqExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

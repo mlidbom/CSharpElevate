@@ -23,7 +23,7 @@ namespace CSharp3.Linq.ExtensionMethods
         }
 
         [Test]
-        public void ShouldEnableYouToDoThingsInWaysThatMaySurpriseYou()
+        public void EnablesDifferentWaysOfDoingThings()
         {
             Func<int, int> square = x => x * x;
             var sumOfSquares = Enumerable.Range(0, 10).Select(square).Sum();
