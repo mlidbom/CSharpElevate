@@ -11,7 +11,7 @@ namespace CSharp3.TypeInference
     {
         public void SavesLotsOfTyping()
         {
-            //The type is right there. Why would you want to type that again?
+            //The type is right there. Why would you want to type it again?
             var typeAndIdInstanceLookup = new Dictionary<Type, Func<object, object>>();
         }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -10,18 +11,20 @@ namespace CSharp3.Linq.ExtensionMethods
         [Test]
         public void ShouldDeferrExecutionUntilIteration()
         {
-            bool called = false;
-            Func<int, int> squareAndMarkAsCalled = me =>
-                                                       {
-                                                           called = true;
-                                                           return me*me;
-                                                       };
+            bool squareCalled = false;
+            Func<int, int> square = me =>
+                                        {
+                                            squareCalled = true;
+                                            return me*me;
+                                        };
 
-            var squares = Enumerable.Range(0, 9).Select(squareAndMarkAsCalled);
-            Assert.That(called, Is.False);
+            IEnumerable<int> squares = Enumerable.Range(0, 9).Select(square);
+            Assert.That(squareCalled, Is.False);
 
-            var squaresList = squares.ToList();
-            Assert.That(called, Is.True);
+            ///ToList as well as any other method that return a concrete type rather than 
+            /// IEnumerable<T> or  IQueryable<T> will cause iteration.
+            squares.ToList();
+            Assert.That(squareCalled, Is.True);
         }
     }
 }
