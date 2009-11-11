@@ -12,6 +12,8 @@
     <AssemblyName>CSharp3</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,13 +49,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="001-Prerequisites\010-Enumerators\Enumerators.cs" />
-    <Compile Include="010-TypeInference\TypeInference.cs" />
+    <Compile Include="035-TypeInference\TypeInference.cs" />
+    <Compile Include="015-PartialMethods\PartialMethods.cs" />
+    <Compile Include="030-Initializers\ObjectInitializers.cs" />
+    <Compile Include="020-AutoImplementedProperties\AutoImplementedProperties.cs" />
+    <Compile Include="040-AnonymousTypes\AnonymousTypes.cs" />
     <Compile Include="070-LambdaExpressions\010-Closures.cs" />
     <Compile Include="070-LambdaExpressions\020-WithTypeInference.cs" />
-    <Compile Include="080Linq\ExtensionMethods\010-WithExtentionMethods.cs" />
-    <Compile Include="080Linq\ExtensionMethods\DeferredExecution.cs" />
+    <Compile Include="080Linq\010-ExtensionMethods\010-WithExtentionMethods.cs" />
+    <Compile Include="080Linq\010-ExtensionMethods\DeferredExecution.cs" />
     <Compile Include="Support\Linq\LinqExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="999-PuttingItAllTogether\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="080Linq\020-ComprehensionSyntax\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

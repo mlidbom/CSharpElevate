@@ -18,11 +18,12 @@ namespace CSharp3.Linq.ExtensionMethods
                                             return me*me;
                                         };
 
+            //Neither range nor select cause iteration/evalutation. Few linq methods do.
             IEnumerable<int> squares = Enumerable.Range(0, 9).Select(square);
             Assert.That(squareCalled, Is.False);
 
-            ///ToList as well as any other method that return a concrete type rather than 
-            /// IEnumerable<T> or  IQueryable<T> will cause iteration.
+            //ToList as well as any other method that return a concrete type rather than 
+            // IEnumerable<T> or  IQueryable<T> will cause iteration.
             squares.ToList();
             Assert.That(squareCalled, Is.True);
         }
