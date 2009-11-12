@@ -38,21 +38,19 @@ namespace CSharp3._050_ExtensionMethods
         [Test]
         public void MakesForSimpleMoreDeclarativeCode()
         {
+            Func<int, int> square = x => x*x;
+
+
             //No longer do you need to do this:
             for(int i = 1; i <= 10; i++)
             {
-                int squared = i*i;
+                int squared = square(i);
                 Console.WriteLine(squared);
             }
 
             //Now you can do this:
-            foreach (var i in 1.Through(10).Select(x => x*x))
-            {
-                Console.WriteLine(i);
-            }
-
-            //even this.
-            1.Through(10).Select(x=>x*x).ForEach(Console.WriteLine);
+            1.Through(10).Select(square).ForEach(Console.WriteLine);
         }
     }
 }
+
