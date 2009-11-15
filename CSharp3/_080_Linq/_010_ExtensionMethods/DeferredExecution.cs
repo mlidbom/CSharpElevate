@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
-namespace CSharp3.Linq.ExtensionMethods
+namespace CSharp3._080_Linq._010_ExtensionMethods
 {
     [TestFixture]
     public class DeferredExecution
@@ -13,10 +13,10 @@ namespace CSharp3.Linq.ExtensionMethods
         {
             bool squareCalled = false;
             Func<int, int> square = me =>
-                                        {
-                                            squareCalled = true;
-                                            return me*me;
-                                        };
+                                    {
+                                        squareCalled = true;
+                                        return me*me;
+                                    };
 
             //Neither range nor select cause iteration/evalutation. Few linq methods do.
             IEnumerable<int> squares = Enumerable.Range(0, 9).Select(square);

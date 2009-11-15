@@ -52,19 +52,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="001-Prerequisites\010-Enumerators\Enumerators.cs" />
-    <Compile Include="035-TypeInference\TypeInference.cs" />
-    <Compile Include="015-PartialMethods\PartialMethods.cs" />
-    <Compile Include="030-Initializers\ObjectInitializers.cs" />
-    <Compile Include="020-AutoImplementedProperties\AutoImplementedProperties.cs" />
-    <Compile Include="040-AnonymousTypes\AnonymousTypes.cs" />
-    <Compile Include="050-ExtensionMethods\Extensions.cs" />
-    <Compile Include="070-LambdaExpressions\005-Intro.cs" />
-    <Compile Include="070-LambdaExpressions\010-Closures.cs" />
-    <Compile Include="070-LambdaExpressions\020-WithTypeInference.cs" />
-    <Compile Include="080Linq\010-ExtensionMethods\010-WithExtentionMethods.cs" />
-    <Compile Include="080Linq\010-ExtensionMethods\DeferredExecution.cs" />
-    <Compile Include="080Linq\020-ComprehensionSyntax\SelectStatement.cs" />
+    <Compile Include="_001_Prerequisites\_010_Enumerators\Enumerators.cs" />
+    <Compile Include="_035_TypeInference\TypeInference.cs" />
+    <Compile Include="_015_PartialMethods\PartialMethods.cs" />
+    <Compile Include="_030_Initializers\ObjectInitializers.cs" />
+    <Compile Include="_020_AutoImplementedProperties\AutoImplementedProperties.cs" />
+    <Compile Include="_040_AnonymousTypes\AnonymousTypes.cs" />
+    <Compile Include="_050_ExtensionMethods\Extensions.cs" />
+    <Compile Include="_070_LambdaExpressions\005-Intro.cs" />
+    <Compile Include="_070_LambdaExpressions\020-Closures.cs" />
+    <Compile Include="_070_LambdaExpressions\010-WithTypeInference.cs" />
+    <Compile Include="_070_LambdaExpressions\030-TheMagicalPowerOfClosures.cs" />
+    <Compile Include="_075_TypeInferencePart2_WhyUseVar\OneBenefitOfMinimizingCoupling.cs" />
+    <Compile Include="_080_Linq\_010_ExtensionMethods\010-WithExtentionMethods.cs" />
+    <Compile Include="_080_Linq\_010_ExtensionMethods\DeferredExecution.cs" />
+    <Compile Include="_080_Linq\_020_ComprehensionSyntax\SelectStatement.cs" />
     <Compile Include="Support\Linq\LinqExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,7 +74,7 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="999-PuttingItAllTogether\readme.txt" />
+    <Content Include="_999_PuttingItAllTogether\readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,11 +18,11 @@ namespace CSharp3._070_LambdaExpressions
         [Test]
         public void OneReasonWhyYouWantLambdas()
         {
-            //Yuck! Five lines of code with the Named method declaration just to call one method.
+            //Yuck! Five lines of code including the Named method declaration just to call one method.
             WaitCallback printMessageFromNamedMethod = new WaitCallback(Log);
-            ThreadPool.QueueUserWorkItem(printMessageFromNamedMethod, "Hi there from typed delegate");
+            ThreadPool.QueueUserWorkItem(printMessageFromNamedMethod, "Hi there from typed named delegate");
 
-            //Painful, but at least I don't have to define a named method just for this.
+            //Painful, but at least I don't have to define a named method.
             WaitCallback printMessage = new WaitCallback(delegate(object message) { log.Push(message); });
             ThreadPool.QueueUserWorkItem(printMessage, "Hi there from typed delegate");
 

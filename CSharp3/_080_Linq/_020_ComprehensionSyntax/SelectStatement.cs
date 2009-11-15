@@ -3,7 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using Void.Linq;
 
-namespace CSharp3._080Linq._020_ComprehensionSyntax
+namespace CSharp3._080_Linq._020_ComprehensionSyntax
 {
     [TestFixture]
     public class SelectStatement

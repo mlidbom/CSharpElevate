@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
 
-namespace CSharp3._020PartialMethods
+namespace CSharp3._015_PartialMethods
 {
-
     /// <summary>
     /// Partial methods are primarily used as extension points in generated code.
     /// </summary>

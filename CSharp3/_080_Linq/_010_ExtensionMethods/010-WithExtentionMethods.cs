@@ -3,7 +3,7 @@ using System.Linq;
 using NUnit.Framework;
 using CSharp3.Support.Linq;
 
-namespace CSharp3.Linq.ExtensionMethods
+namespace CSharp3._080_Linq._010_ExtensionMethods
 {
     [TestFixture]
     public class WithExtentionMethods

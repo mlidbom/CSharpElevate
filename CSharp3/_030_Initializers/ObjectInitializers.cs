@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace CSharp3._020_Initializers
+namespace CSharp3._030_Initializers
 {
     [TestFixture]
     public class ObjectInitializers
