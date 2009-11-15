@@ -1,13 +1,10 @@
 using System;
 using NUnit.Framework;
 
-
-namespace CSharp3._070_LambdaExpressions
+namespace CSharp3._200_MindBenders
 {
     /// <summary>
-    /// Closure in math
-    /// In math a set Y is said to be closed over an operation X 
-    /// if the operation X applied to any member of Y results is a member of Y
+ 
     /// 
     /// A pair is something that can be created via MakePair 
     /// examined via First and Second such that:
@@ -15,7 +12,7 @@ namespace CSharp3._070_LambdaExpressions
     /// and
     /// Second(MakePair(first, second)) = second
     /// 
-    /// Given the above definition of pair th set of all pairs is closed 
+    /// Given the above definition of pair the set of all pairs is closed 
     /// over the operation MakePair
     /// </summary>
     [TestFixture]
