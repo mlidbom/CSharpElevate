@@ -5,27 +5,27 @@ using System.Linq;
 using CSharp3.Support.Linq;
 using NUnit.Framework;
 
-namespace CSharp3._075_TypeInferencePart2_WhyUseVar
+namespace CSharp3._090_Principles._010_TypeInferencePart2_WhyUseVar
 {
+    /// <summary>
+    /// When you use var rather than explicit types 
+    /// the good design principle of using as narrow
+    /// an abstraction as possible becomes automatic.
+    /// 
+    /// By narrow I'm referring to your knowledge of 
+    /// the type in question.  The less you know, 
+    /// the better for your code.
+    /// 
+    /// If you only use the part of a variable corresponding
+    /// to an interface then if the type of the variable
+    /// changes your code will still work without any changes.
+    /// This is a powerful concept.
+    /// </summary>
     [TestFixture]
-    public class OneBenefitOfMinimizingCoupling
+    public class Because
     {
-        /// <summary>
-        /// When you use var rather than explicit types 
-        /// the good design principle of using as narrow
-        /// an abstraction as possible becomes automatic.
-        /// 
-        /// By narrow I'm referring to your knowledge of 
-        /// the type in question.  The less you know, 
-        /// the better for your code.
-        /// 
-        /// If you only use the part of a variable corresponding
-        /// to an interface then if the type of the variable
-        /// changes your code will still work without any changes.
-        /// This is a powerful concept.
-        /// </summary>
         [Test]
-        public void IsGreatlyImprovedAgility()
+        public void VarMinimizesCoupling()
         {
             //The most specifically typed definition of getPrintObjects.
             //Such specific typing should only be used if you 

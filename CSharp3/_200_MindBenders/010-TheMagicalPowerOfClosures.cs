@@ -1,8 +1,23 @@
 using System;
 using NUnit.Framework;
 
+
 namespace CSharp3._070_LambdaExpressions
 {
+    /// <summary>
+    /// Closure in math
+    /// In math a set Y is said to be closed over an operation X 
+    /// if the operation X applied to any member of Y results is a member of Y
+    /// 
+    /// A pair is something that can be created via MakePair 
+    /// examined via First and Second such that:
+    /// First(MakePair(first, second)) = first
+    /// and
+    /// Second(MakePair(first, second)) = second
+    /// 
+    /// Given the above definition of pair th set of all pairs is closed 
+    /// over the operation MakePair
+    /// </summary>
     [TestFixture]
     public class HowToBuildPairsOutOfNothingAtAll
     {
@@ -21,7 +36,7 @@ namespace CSharp3._070_LambdaExpressions
         }
 
         [Test]
-        public void PairsIsAnAbstractionThatIsClosedOverTheOpertionOfMakingPairs()
+        public void TheSetOfPairsIsIsClosedOverTheOpertionOfMakePair()
         {
             var twoAndFourAndEightAndSixteen = MakePair(MakePair(2, 4), MakePair(8,16)); //What is the type?
             Assert.That(Second(Second(twoAndFourAndEightAndSixteen)), Is.EqualTo(16));
