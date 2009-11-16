@@ -52,8 +52,7 @@ namespace CSharp3._001_Intro
 
         // Fetching data, recursive descent tree walking, 
         // transforming data, and data aggregation 
-        // is all baked into one big mess. Do you think that 
-        // it is easy to read the first time you see it?
+        // is all baked into one big mess.
         //
         // Code should do one thing at a time in clear and easy to read steps.        
         //        
@@ -62,6 +61,13 @@ namespace CSharp3._001_Intro
         //  Transforming data
         //  Flattening data
         //  Aggregating data
+        //
+        //In terms of SOLID this translates into violations of;
+        //1.SRP since the function is supposed to calculate the size of 
+        //a folder but takes upon itself to implement the wheels above.
+        //
+        //2. DRY since you are reinventing the wheel several times over.
+        //
 
         #endregion
 
