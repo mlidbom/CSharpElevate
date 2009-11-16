@@ -52,7 +52,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="_001_Prerequisites\_010_Enumerators\Enumerators.cs" />
+    <Compile Include="_001_Intro\TheElephantInTheRoom.cs" />
+    <Compile Include="_005_Prerequisites\_010_Enumerators\Enumerators.cs" />
     <Compile Include="_035_TypeInference\TypeInference.cs" />
     <Compile Include="_015_PartialMethods\PartialMethods.cs" />
     <Compile Include="_030_Initializers\ObjectInitializers.cs" />
