@@ -69,7 +69,6 @@
     <Compile Include="_080_Linq\_010_ExtensionMethods\010-WithExtentionMethods.cs" />
     <Compile Include="_080_Linq\_010_ExtensionMethods\DeferredExecution.cs" />
     <Compile Include="_080_Linq\_020_ComprehensionSyntax\SelectStatement.cs" />
-    <Compile Include="Support\Linq\LinqExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="_100_PuttingItAllTogether\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Support\Linq\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

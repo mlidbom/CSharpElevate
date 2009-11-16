@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using NUnit.Framework;
+using System.Linq;
+using Void.Linq;
 using Void.Hierarchies;
 
 namespace CSharp3._001_Intro
@@ -21,14 +23,10 @@ namespace CSharp3._001_Intro
     [TestFixture]
     public class TheElephantInTheRoom
     {
-        #region The wrong way
-
         /// <summary>
-        /// This is about how I usually see code like this.
-        /// Unless the coder is afraid of recursion and makes 
-        /// it far uglier still that is!
+        /// This is about how I usually see code like this
         /// </summary>
-        private static long SizeOfFolderClassic(string folder)
+        static long SizeOfFolderClassic(string folder)
         {
             long result = 0;
             string[] subFolders = Directory.GetDirectories(folder);
@@ -36,7 +34,7 @@ namespace CSharp3._001_Intro
             {
                 result += SizeOfFolderClassic(subFolder);
             }
-
+            
             string[] files = Directory.GetFiles(folder);
             foreach (var file in files)
             {
@@ -45,8 +43,6 @@ namespace CSharp3._001_Intro
 
             return result;
         }
-
-        #endregion
 
         #region And what's wrong with that?
 
@@ -60,35 +56,24 @@ namespace CSharp3._001_Intro
         // Wheels reinvented above: 
         //  Recursive descent tree walking
         //  Transforming data
-        //  Flattening data
-        //  Aggregating data
+        //  Aggregateing data
+
+
 
         #endregion
 
-        #region The right way
-
-        private static long SizeOfFolderSane(string folder)
+        static long SizeOfFolderSane(string folder)
         {
             return folder.FlattenHierarchy(Directory.GetDirectories)
-                .SelectMany(dir => Directory.GetFiles(dir))
-                .Sum(file => new FileInfo(file).Length);
+             .SelectMany(dir => Directory.GetFiles(dir))
+             .Sum(file => new FileInfo(file).Length);
         }
-
-        #endregion
-
-        #region Yes it works
 
         [Test]
-        public void BothReturnNonSeroSizesThatAreTheSame()
+        public void SumSquaresTheOldWay()
         {
-            var folder = @"C:\temp";
-            var sizeClassic = SizeOfFolderClassic(folder);
-            var sizeSane = SizeOfFolderSane(folder);
 
-            Assert.That(sizeClassic, Is.EqualTo(sizeSane));
-            Console.WriteLine(sizeSane); //Compare with total commander...            
-        }
 
-        #endregion
+        }   
     }
 }

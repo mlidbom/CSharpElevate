@@ -1,33 +1,138 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using NUnit.Framework;
-using CSharp3.Support.Linq;
+using Void.Linq;
+using CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures;
+using Void.Hierarchies;
 
 namespace CSharp3._080_Linq._010_ExtensionMethods
 {
+    /// <summary>
+    ///     
+    /// Again and again pretty much in most codefiles you see reinvention of   
+    ///     filtering
+    ///     transforming
+    ///     sorting
+    ///     aggregating
+    ///     combining
+    ///     The list goes on and on.
+    /// 
+    /// Talk about a code smell. Remember DRY?
+    /// The functional programming world is laughing at us. 
+    /// They solved this before there were PCs!
+    /// 
+    /// How do they solve it? Functional decomposition
+    ///     filter -> Where
+    ///     map -> Select
+    ///     fold/reduce -> Aggregate(different overloads)
+    ///     zip -> Zip Only in 4.0
+    ///     
+    /// </summary>
+
     [TestFixture]
     public class WithExtentionMethods
     {
         [Test]
-        public void WhereFiltersStuffForYou()
+        public void WhereFilters()
         {
-            var odds = Enumerable.Range(1, 10).Where(number => number%2 != 0);
-            odds.ForEach(Console.WriteLine);
+            1.Through(10).Where(number => number%2 != 0)
+                .ForEach(Console.WriteLine);
         }
 
         [Test]
-        public void SelectTransformsSequences()
+        public void SelectTransforms()
         {
-            var squaresFrom1To10 = Enumerable.Range(1, 10).Select(x => x * x);
-            squaresFrom1To10.ForEach(Console.WriteLine);
+            Directory.GetFiles(@"C:\")
+                .Select(me => new FileInfo(me))
+                .ForEach(Console.WriteLine);
         }
 
         [Test]
-        public void EnablesDifferentWaysOfDoingThings()
+        public void SumSums()
         {
-            Func<int, int> square = x => x * x;
-            var sumOfSquares = Enumerable.Range(0, 10).Select(square).Sum();
-            Console.WriteLine(sumOfSquares);
+            Directory.GetFiles(@"C:\")
+                .Sum(me => new FileInfo(me).Length)
+                .Do(Console.WriteLine);
+        }
+
+        [Test]
+        public void AggregateAggregatesAndTransforms()
+        {
+            Directory.GetFiles(@"C:\")
+                .Aggregate((aggregate, file) => aggregate + "," + file)
+                .Do(Console.WriteLine);
+
+            1.Through(10)
+                .Aggregate(0, (sum, current) => sum + current)
+                .Do(Console.WriteLine);//You should really use Sum in this specific case :)
+        }
+
+        [Test]
+        public void SelectManyFlattens()
+        {
+            var ints = new int[][] {new []{ 1, 2 }, new []{3, 4} };
+            ints.SelectMany(me => me).ForEach(Console.WriteLine);
+        }
+
+        [Test]
+        public void DistinctRemovesDuplicates()
+        {
+            Seq.Create(1,1,2,2,3,3,4,5).Distinct().ForEach(Console.WriteLine);
+        }
+
+        [Test]
+        public void ExceptFiltersOutAllElementsInTheArgumentSequence()
+        {
+            1.Through(5).Except(2.Through(4)).ForEach(Console.WriteLine);
+        }
+
+        [Test]
+        public void GroupByGroups()
+        {
+            Func<int, bool> isEven = me => me%2 == 0; 
+            1.Through(10).GroupBy(isEven)
+                .ForEach(group =>
+                         {
+                             Console.WriteLine("Even? {0}", group.Key);
+                             group.ForEach(Console.WriteLine);
+                             Console.WriteLine();
+                         }
+                );
+        }
+
+        [Test]
+        public void RememberMe()
+        {
+            @"C:\Temp".FlattenHierarchy(Directory.GetDirectories)
+                .SelectMany(dir => Directory.GetFiles(dir))
+                .Sum(file => new FileInfo(file).Length)
+                .Do(Console.WriteLine);
+
+            //Verbose version
+            var sizeOfFolder = Seq.Create(@"C:\Temp")//Create an IEnumerable<string> with one entry 
+                //Recursive tree walk
+                //Finds all folders below "folder" by recursively calling Directory.GetDirectories
+                //and appends them to the IEnumerable<string>
+                .FlattenHierarchy(Directory.GetDirectories)
+
+                //transforms the IEnumerable of folder names into an 
+                //IEnumerable of string[]with all the files in each folder
+                .Select(currentDirectory => Directory.GetFiles(currentDirectory))
+
+                //flattens the IEnumerable of string[] into an IEnumerable of string
+                .SelectMany(files => files)
+
+                //Transforms the filepaths into FileInfo objects
+                .Select(file => new FileInfo(file)) //transformation 
+
+                //Transforms the FileInfo objects into longs containing
+                //their size
+                .Select(fileinfo => fileinfo.Length) //transformation
+
+                //Sums all the file sizes.
+                .Sum();//aggregation.
+            Console.WriteLine(sizeOfFolder);
         }
     }
 }

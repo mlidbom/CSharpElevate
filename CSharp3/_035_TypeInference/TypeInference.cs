@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using NUnit.Framework;
-using CSharp3.Support.Linq;
 
 namespace CSharp3._035_TypeInference
 {
@@ -29,6 +26,6 @@ namespace CSharp3._035_TypeInference
             Assert.That(int10, Is.Not.TypeOf<double>());
 
             //int10 = double10; //Compilation error.
-        }       
+        }
     }
 }

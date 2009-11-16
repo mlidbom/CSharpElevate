@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using CSharp3.Support.Linq;
 using NUnit.Framework;
+using Void.Linq;
 
-namespace CSharp3._090_Principles._010_TypeInferencePart2_WhyUseVar
+namespace CSharp3._090_PrinciplesViaSolid._010_AlwaysUseVar
 {
     /// <summary>
     /// When you use var rather than explicit types 
