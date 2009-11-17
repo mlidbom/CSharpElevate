@@ -27,7 +27,7 @@ namespace CSharp3._200_MindBenders
         public void FindAllPairsOfIntsIAndJWhereJIsSmallerThanIAndISmallerThan100WhereTheSumOfThePairsIsAPrimeNumberAndPrintThem()
         {
             1.Through(99)
-                .SelectMany(i => i.Times(i - 1).Zip(1.Through(i - 1)))
+                .SelectMany(i => i.Repeat(i - 1).Zip(1.Through(i - 1)))
                 .Where(i => 2.Through(i.First - 1).None(candidate => (i.First + i.Second) % candidate == 0))
                 .ForEach(pair => Console.WriteLine("Pair {0} has sum {1}. {1} is prime", pair, pair.First + pair.Second));
         }
@@ -54,7 +54,7 @@ namespace CSharp3._200_MindBenders
         public void FindAllPairsOfIntsIAndJWhereJIsSmallerThanIAndISmallerThan100WhereTheSumOfThePairsIsAPrimeNumberAndPrintThemExplained()
         {
             Func<int, IEnumerable<Zipping.Pair<int, int>>> generatePairsWithNumbersLowerThan =
-                i => i.Times(i - 1) //Repeat i (i - 1) times
+                i => i.Repeat(i - 1) //Repeat i (i - 1) times
                          .Zip( //Pair each i with 
                          1.Through(i - 1) //A number between 1 and i
                          );
