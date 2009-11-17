@@ -63,13 +63,13 @@
     <Compile Include="_070_LambdaExpressions\005-Intro.cs" />
     <Compile Include="_070_LambdaExpressions\020-Closures.cs" />
     <Compile Include="_070_LambdaExpressions\010-WithTypeInference.cs" />
-    <Compile Include="_080_Linq\_015_Lazyness\LazynessMakeTheImpossiblePossible.cs" />
+    <Compile Include="_080_Linq\_015_Lazyness\_02_LazynessMakeTheImpossiblePossible.cs" />
     <Compile Include="_090_PrinciplesViaSolid\_020_UseAndCreateClosures\Closure.cs" />
     <Compile Include="_200_MindBenders\_005_LinqTricks.cs" />
     <Compile Include="_200_MindBenders\010-TheMagicalPowerOfClosures.cs" />
     <Compile Include="_090_PrinciplesViaSolid\_010_AlwaysUseVar\Because.cs" />
     <Compile Include="_080_Linq\_010_ExtensionMethods\010-WithExtentionMethods.cs" />
-    <Compile Include="_080_Linq\_015_Lazyness\DeferredExecution.cs" />
+    <Compile Include="_080_Linq\_015_Lazyness\_01_DeferredExecution.cs" />
     <Compile Include="_080_Linq\_020_ComprehensionSyntax\SelectStatement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -77,10 +77,8 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Timeline.txt" />
     <Content Include="_100_PuttingItAllTogether\readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Support\Linq\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
