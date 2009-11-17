@@ -56,7 +56,7 @@
     <Compile Include="_005_Prerequisites\_010_Enumerators\Enumerators.cs" />
     <Compile Include="_035_TypeInference\TypeInference.cs" />
     <Compile Include="_015_PartialMethods\PartialMethods.cs" />
-    <Compile Include="_030_Initializers\ObjectInitializers.cs" />
+    <Compile Include="_030_Initializers\Initializers.cs" />
     <Compile Include="_020_AutoImplementedProperties\AutoImplementedProperties.cs" />
     <Compile Include="_040_AnonymousTypes\AnonymousTypes.cs" />
     <Compile Include="_050_ExtensionMethods\Extensions.cs" />
@@ -69,7 +69,7 @@
     <Compile Include="_200_MindBenders\010-TheMagicalPowerOfClosures.cs" />
     <Compile Include="_090_PrinciplesViaSolid\_010_AlwaysUseVar\Because.cs" />
     <Compile Include="_080_Linq\_010_ExtensionMethods\010-WithExtentionMethods.cs" />
-    <Compile Include="_080_Linq\_010_ExtensionMethods\DeferredExecution.cs" />
+    <Compile Include="_080_Linq\_015_Lazyness\DeferredExecution.cs" />
     <Compile Include="_080_Linq\_020_ComprehensionSyntax\SelectStatement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

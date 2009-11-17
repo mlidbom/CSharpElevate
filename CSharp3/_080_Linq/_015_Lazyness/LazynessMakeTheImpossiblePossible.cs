@@ -5,7 +5,7 @@ using NUnit.Framework;
 using CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures;
 using Void.Linq;
 
-namespace CSharp3._080_Linq._005_Lazyness
+namespace CSharp3._080_Linq._015_Lazyness
 {
     /// <summary>
     /// As a general rule Linq logic performs spectacularly well.
@@ -34,8 +34,8 @@ namespace CSharp3._080_Linq._005_Lazyness
             #endregion
 
             var intMaxValueSquaredInLength = 1.Through(int.MaxValue)
-                                                       .SelectMany(num =>
-                                                           1.Through(int.MaxValue));
+                .SelectMany(num =>
+                            1.Through(int.MaxValue));
 
             #region print: Creating the data took...
 

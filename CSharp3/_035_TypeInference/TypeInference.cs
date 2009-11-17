@@ -12,7 +12,6 @@ namespace CSharp3._035_TypeInference
         {
             //The type is right there. Why would you want to type it again?
             var typeAndIdInstanceLookup = new Dictionary<Type, Func<object, object>>();
-            Assert.That(typeAndIdInstanceLookup, Is.TypeOf<Dictionary<Type, Func<object, object>>>());
         }
 
         [Test]
