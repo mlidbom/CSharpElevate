@@ -17,10 +17,14 @@ namespace CSharp3._080_Linq._005_Lazyness
         [Test]
         public void UseIntMaxvalueSquaredIntegersToFindTheFirst100NumbersDivisibleBy5()
         {
-            Func<double, long> toExaBytes = i => (long)(i / Math.Pow(1000, 6));
+            Console.WriteLine("Facebook has just over 1.5 petabytes of users' photos stored,\ntranslating into roughly 10 billion photos\n");
+
+            Func<double, long> toPetaBytes = i => (long)(i / Math.Pow(1000, 5));
             Math.Pow(int.MaxValue, 2)
-                .Transform(toExaBytes)
-                .Do(me => Console.WriteLine("Looking for the result in {0} ExaByte of data\n", me));
+                .Transform(numberOfIntegers => numberOfIntegers * 4)
+                .Transform(toPetaBytes)
+                .Do(me => Console.WriteLine("Generating {0} petabytes of lazy data...\n", me));            
+
 
             #region start timing
 
@@ -41,7 +45,8 @@ namespace CSharp3._080_Linq._005_Lazyness
 
             #endregion
 
-            Console.WriteLine("Results");
+            Console.WriteLine("Searching...\n");
+
             intMaxValueSquaredInLength
                 .Where(i => i % 5 == 0)
                 .Take(10)
