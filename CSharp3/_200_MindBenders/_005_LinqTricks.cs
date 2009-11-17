@@ -1,24 +1,69 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using Void.Linq;
 using NUnit.Framework;
+using Void.Linq;
 
 namespace CSharp3._200_MindBenders
 {
     [TestFixture]
     public class _005_LinqTricks
     {
-        [Test]
-        public void FindAllPairsOfIntsIAndJWhereJIsSmallerThanIAndISmallerThan100WhereTheSumOfThePairsIsAPrimeNumber()
-        {
-            Func<int, int, bool> isDivisibleBy = (number, test) => number % test == 0;
-            Func<int, bool> isPrime = i => !2.Through(i - 1).Any(number => isDivisibleBy( i, number));
+        #region Level 1
 
+        [Test]
+        public void FindAndPrintAllPrimesBelow100()
+        {
+            1.Through(99)
+                .Where(i => 2.Through(i - 1).None(candidate => i % candidate == 0))
+                .ForEach(Console.WriteLine);
+        }
+
+        #endregion
+
+        #region Level 2
+
+        [Test]
+        public void FindAllPairsOfIntsIAndJWhereJIsSmallerThanIAndISmallerThan100WhereTheSumOfThePairsIsAPrimeNumberAndPrintThem()
+        {
             1.Through(99)
                 .SelectMany(i => i.Times(i - 1).Zip(1.Through(i - 1)))
-                .Where(pair => isPrime(pair.First + pair.Second))
+                .Where(i => 2.Through(i.First - 1).None(candidate => (i.First + i.Second) % candidate == 0))
                 .ForEach(pair => Console.WriteLine("Pair {0} has sum {1}. {1} is prime", pair, pair.First + pair.Second));
-
         }
+
+        #endregion
+
+        #region How it works
+
+        // the  % operator returns 0 if the first operand is evenly divisible by the second
+        private static readonly Func<int, int, bool> IsDivisibleBy = (number, test) => number % test == 0;
+
+        //if i is divisible by any number it is not prime
+        private static readonly Func<int, bool> IsPrime = i => 2.Through(i - 1).None(number => IsDivisibleBy(i, number));
+
+        [Test]
+        public void FindAndPrintAllPrimesBelow100Explained()
+        {
+            1.Through(99)
+                .Where(IsPrime)
+                .ForEach(Console.WriteLine);
+        }
+
+        [Test]
+        public void FindAllPairsOfIntsIAndJWhereJIsSmallerThanIAndISmallerThan100WhereTheSumOfThePairsIsAPrimeNumberAndPrintThemExplained()
+        {
+            Func<int, IEnumerable<Zipping.Pair<int, int>>> generatePairsWithNumbersLowerThan =
+                i => i.Times(i - 1) //Repeat i (i - 1) times
+                         .Zip( //Pair each i with 
+                         1.Through(i - 1) //A number between 1 and i
+                         );
+            1.Through(99)
+                .SelectMany(generatePairsWithNumbersLowerThan)
+                .Where(pair => IsPrime(pair.First + pair.Second))
+                .ForEach(pair => Console.WriteLine("Pair {0} has sum {1}. {1} is prime", pair, pair.First + pair.Second));
+        }
+
+        #endregion
     }
 }
