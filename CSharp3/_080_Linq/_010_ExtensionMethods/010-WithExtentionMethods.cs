@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using NUnit.Framework;
-using Void.Linq;
 using CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures;
+using NUnit.Framework;
 using Void.Hierarchies;
+using Void.Linq;
 
 namespace CSharp3._080_Linq._010_ExtensionMethods
 {
@@ -29,14 +29,13 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
     ///     zip -> Zip Only in 4.0
     ///     
     /// </summary>
-
     [TestFixture]
     public class WithExtentionMethods
     {
         [Test]
         public void WhereFilters()
         {
-            1.Through(10).Where(number => number%2 != 0)
+            1.Through(10).Where(number => number % 2 != 0)
                 .ForEach(Console.WriteLine);
         }
 
@@ -65,20 +64,20 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
 
             1.Through(10)
                 .Aggregate(0, (sum, current) => sum + current)
-                .Do(Console.WriteLine);//You should really use Sum in this specific case :)
+                .Do(Console.WriteLine); //You should really use Sum in this specific case :)
         }
 
         [Test]
         public void SelectManyFlattens()
         {
-            var ints = new int[][] {new []{ 1, 2 }, new []{3, 4} };
+            var ints = new[] {new[] {1, 2}, new[] {3, 4}};
             ints.SelectMany(me => me).ForEach(Console.WriteLine);
         }
 
         [Test]
         public void DistinctRemovesDuplicates()
         {
-            Seq.Create(1,1,2,2,3,3,4,5).Distinct().ForEach(Console.WriteLine);
+            Seq.Create(1, 1, 2, 2, 3, 3, 4, 5).Distinct().ForEach(Console.WriteLine);
         }
 
         [Test]
@@ -90,7 +89,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         [Test]
         public void GroupByGroups()
         {
-            Func<int, bool> isEven = me => me%2 == 0; 
+            Func<int, bool> isEven = me => me % 2 == 0;
             1.Through(10).GroupBy(isEven)
                 .ForEach(group =>
                          {
@@ -109,12 +108,13 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
                 .Sum(file => new FileInfo(file).Length)
                 .Do(Console.WriteLine);
 
+
             //Verbose version
-            var sizeOfFolder = Seq.Create(@"C:\Temp")//Create an IEnumerable<string> with one entry 
-                //Recursive tree walk
-                //Finds all folders below "folder" by recursively calling Directory.GetDirectories
-                //and appends them to the IEnumerable<string>
-                .FlattenHierarchy(Directory.GetDirectories)
+
+            //Recursive tree walk. Finds all folders below and including "folder" 
+            //by recursively calling Directory.GetDirectories
+            //and yielding each one
+            var sizeOfFolder = @"C:\Temp".FlattenHierarchy(Directory.GetDirectories)
 
                 //transforms the IEnumerable of folder names into an 
                 //IEnumerable of string[]with all the files in each folder
@@ -131,7 +131,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
                 .Select(fileinfo => fileinfo.Length) //transformation
 
                 //Sums all the file sizes.
-                .Sum();//aggregation.
+                .Sum(); //aggregation.
             Console.WriteLine(sizeOfFolder);
         }
     }
