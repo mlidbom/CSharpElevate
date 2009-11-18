@@ -30,7 +30,7 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
     /// </summary>
     [TestFixture]
     public class Closure
-    {
+    {		
         [Test]
         public void YourOperationIsEasylyComposableWithAllTheOtherClosedOperationsOnTheSet()
         {
@@ -40,13 +40,13 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
 
         [Test]
         public void TransformAndDoAllowsYouToWriteThingsInTheOrderTheyShouldBeExecutedWithoutUsingTemporaryVariables()
-        {
-            //task: print a comma separated list of the names of the files in c:\                        
+        {			
+            //task: print a comma separated list of the names of the files on your Desktop                        
 
+			string aDirectory = Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
             //Doing it the good old way.
             //No extension methods, no lambdas.
-            string directory = @"C:\";
-            var filePaths = Directory.GetFiles(directory);
+            var filePaths = Directory.GetFiles(aDirectory);
             var fileNames = new string[filePaths.Length];
             for (int i = 0; i < filePaths.Length; i++ )
             {
@@ -69,9 +69,8 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
 
             #endregion
 
-            //Let's try it with Linq only. None of my extensions:
-            directory = @"C:\";            
-            var fileNamesLinq = Directory.GetFiles(directory)
+            //Let's try it with Linq only. None of my extensions:       
+            var fileNamesLinq = Directory.GetFiles(aDirectory)
                 .Select(me => Path.GetFileName(me))
                 .Aggregate((result, current) => result + "," + current);
             Console.WriteLine(fileNamesLinq);
@@ -95,7 +94,7 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
 
             //Now let's try it using lambdas and my extension methods 
             //Transform and Do as well as the Linq extension methods Select and ToArray
-            @"C:\".Transform(me => Directory.GetFiles(me))
+            aDirectory.Transform(me => Directory.GetFiles(me))
                   .Select(me => Path.GetFileName(me))
                   .Transform(me => string.Join(",", me.ToArray()))
                   .Do(Console.WriteLine);

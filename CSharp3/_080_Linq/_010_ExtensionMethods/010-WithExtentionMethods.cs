@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Linq;
 using CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures;
@@ -32,6 +32,8 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
     [TestFixture]
     public class WithExtentionMethods
     {
+		string aDirectory = Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+		
         [Test]
         public void WhereFilters()
         {
@@ -42,7 +44,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         [Test]
         public void SelectTransforms()
         {
-            Directory.GetFiles(@"C:\")
+            Directory.GetFiles(aDirectory)
                 .Select(me => new FileInfo(me))
                 .ForEach(Console.WriteLine);
         }
@@ -50,7 +52,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         [Test]
         public void SumSums()
         {
-            Directory.GetFiles(@"C:\")
+            Directory.GetFiles(aDirectory)
                 .Sum(me => new FileInfo(me).Length)
                 .Do(Console.WriteLine);
         }
@@ -58,7 +60,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         [Test]
         public void AggregateAggregatesAndTransforms()
         {
-            Directory.GetFiles(@"C:\")
+            Directory.GetFiles(aDirectory)
                 .Aggregate((aggregate, file) => aggregate + "," + file)
                 .Do(Console.WriteLine);
 
@@ -103,7 +105,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         [Test]
         public void RememberMe()
         {
-            @"C:\Temp".FlattenHierarchy(Directory.GetDirectories)
+            aDirectory.FlattenHierarchy(Directory.GetDirectories)
                 .SelectMany(dir => Directory.GetFiles(dir))
                 .Sum(file => new FileInfo(file).Length)
                 .Do(Console.WriteLine);
@@ -114,7 +116,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
             //Recursive tree walk. Finds all folders below and including "folder" 
             //by recursively calling Directory.GetDirectories
             //and yielding each one
-            var sizeOfFolder = @"C:\Temp".FlattenHierarchy(Directory.GetDirectories)
+            var sizeOfFolder = aDirectory.FlattenHierarchy(Directory.GetDirectories)
 
                 //transforms the IEnumerable of folder names into an 
                 //IEnumerable of string[]with all the files in each folder
