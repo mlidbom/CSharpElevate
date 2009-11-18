@@ -87,7 +87,7 @@ namespace CSharp3._001_Intro
         [Test]
         public void BothReturnNonSeroSizesThatAreTheSame()
         {
-            var folder = @"C:\temp";
+            string folder = Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
             var sizeClassic = SizeOfFolderClassic(folder);
             var sizeSane = SizeOfFolderSane(folder);
 
