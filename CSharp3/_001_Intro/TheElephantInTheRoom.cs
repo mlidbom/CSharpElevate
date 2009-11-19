@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using NUnit.Framework;
 using Void.Hierarchies;
+using Void.IO;
 
 namespace CSharp3._001_Intro
 {
@@ -47,7 +48,7 @@ namespace CSharp3._001_Intro
         }
 
         #endregion
-
+            
         #region And what's wrong with that?
 
         // Fetching data, recursive descent tree walking, 
@@ -75,9 +76,14 @@ namespace CSharp3._001_Intro
 
         private static long SizeOfFolderSane(string folder)
         {
-            return folder.FlattenHierarchy(Directory.GetDirectories)
+            return folder.AsHierarchy(Directory.GetDirectories).Flatten()
                 .SelectMany(dir => Directory.GetFiles(dir))
                 .Sum(file => new FileInfo(file).Length);
+        }
+
+        private static long SizeOfFolderTheBestWay(string path)
+        {
+            return path.AsDirectory().Size();
         }
 
         #endregion
@@ -90,9 +96,12 @@ namespace CSharp3._001_Intro
             string folder = Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
             var sizeClassic = SizeOfFolderClassic(folder);
             var sizeSane = SizeOfFolderSane(folder);
+            var sizeBest = SizeOfFolderTheBestWay(folder); 
 
             Assert.That(sizeClassic, Is.EqualTo(sizeSane));
+            Assert.That(sizeBest, Is.EqualTo(sizeSane));
             Console.WriteLine(sizeSane); //Compare with total commander...            
+            Console.WriteLine(sizeBest); 
         }
 
         #endregion
