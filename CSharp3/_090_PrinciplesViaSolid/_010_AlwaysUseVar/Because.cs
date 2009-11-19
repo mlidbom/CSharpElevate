@@ -8,6 +8,8 @@ using Void.Linq;
 namespace CSharp3._090_PrinciplesViaSolid._010_AlwaysUseVar
 {
     /// <summary>
+    /// Use replace explicit with var Resharper code cleanup on your codebase!
+    /// 
     /// When you use var rather than explicit types 
     /// the good design principle of using as narrow
     /// an abstraction as possible becomes automatic.
@@ -16,9 +18,8 @@ namespace CSharp3._090_PrinciplesViaSolid._010_AlwaysUseVar
     /// the type in question.  The less you know, 
     /// the better for your code.
     /// 
-    /// If you only use the part of a variable corresponding
-    /// to an interface then if the type of the variable
-    /// changes your code will still work without any changes.
+    /// If you only use a part of a variable, then if the type of the variable
+    /// changes your code will still work without any changes as long as that part is available.
     /// This is a powerful concept.
     /// </summary>
     [TestFixture]
