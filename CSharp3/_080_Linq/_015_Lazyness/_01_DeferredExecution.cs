@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 
@@ -11,15 +10,15 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         [Test]
         public void ShouldDeferrExecutionUntilIteration()
         {
-            bool squareCalled = false;
+            var squareCalled = false;
             Func<int, int> square = me =>
                                     {
                                         squareCalled = true;
-                                        return me*me;
+                                        return me * me;
                                     };
 
             //Neither range nor select cause iteration/evalutation. Few linq methods do.
-            IEnumerable<int> squares = Enumerable.Range(0, 9).Select(square);
+            var squares = Enumerable.Range(0, 9).Select(square);
             Assert.That(squareCalled, Is.False);
 
             //ToList as well as any other method that return a concrete type rather than 

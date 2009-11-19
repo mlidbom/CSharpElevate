@@ -9,7 +9,7 @@ namespace CSharp3._001_Prerequisites._010_Enumerators
         [Test]
         public void MakeImplementingIEnumerableReallySimple()
         {
-            int current = 0;
+            var current = 0;
             foreach (var i in AllInts)
             {
                 Assert.That(i, Is.EqualTo(current++));
@@ -26,13 +26,13 @@ namespace CSharp3._001_Prerequisites._010_Enumerators
         ///that implements IEnumerable in such a way as to make each call to 
         /// movenext the equivalent of continuing the execution of this method until 
         /// the next yield statement.
-        static IEnumerable<int> AllInts
+        private static IEnumerable<int> AllInts
         {
             get
             {
                 var current = 0;
                 while (current < int.MaxValue)
-                {                    
+                {
                     yield return current++;
                 }
             }

@@ -15,7 +15,7 @@ namespace CSharp3._050_ExtensionMethods
             }
         }
 
-        public static IEnumerable<TResult> Select<TSource,TResult>(this IEnumerable<TSource> me, Func<TSource, TResult> transform)
+        public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> me, Func<TSource, TResult> transform)
         {
             foreach (var value in me)
             {
@@ -25,7 +25,7 @@ namespace CSharp3._050_ExtensionMethods
 
         public static IEnumerable<int> Through(this int me, int max)
         {
-            while(me <= max)
+            while (me <= max)
             {
                 yield return me++;
             }
@@ -38,13 +38,13 @@ namespace CSharp3._050_ExtensionMethods
         [Test]
         public void MakesForSimpleMoreDeclarativeCode()
         {
-            Func<int, int> square = x => x*x;
+            Func<int, int> square = x => x * x;
 
 
             //No longer do you need to do this:
-            for(int i = 1; i <= 10; i++)
+            for (var i = 1; i <= 10; i++)
             {
-                int squared = square(i);
+                var squared = square(i);
                 Console.WriteLine(squared);
             }
 
@@ -53,4 +53,3 @@ namespace CSharp3._050_ExtensionMethods
         }
     }
 }
-

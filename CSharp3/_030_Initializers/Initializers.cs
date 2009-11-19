@@ -10,44 +10,44 @@ namespace CSharp3._030_Initializers
         {
             public string ForeName { get; set; }
             public string SurName { get; set; }
-            public Person Father{ get; set;}
+            public Person Father { get; set; }
         }
 
         [Test]
         public void ObjectInitialization()
         {
-            Person me = new Person
-                        {
-                            ForeName = "Magnus",
-                            SurName = "Lidbom",
-                            Father = new Person
-                                     {
-                                         ForeName = "Lars",
-                                         SurName = "Lidbom",
-                                         Father = new Person
-                                                  {
-                                                      ForeName = "Tage",
-                                                      SurName = "Lidbom"
-                                                  }
-                                     }
-                        };
+            var me = new Person
+                     {
+                         ForeName = "Magnus",
+                         SurName = "Lidbom",
+                         Father = new Person
+                                  {
+                                      ForeName = "Lars",
+                                      SurName = "Lidbom",
+                                      Father = new Person
+                                               {
+                                                   ForeName = "Tage",
+                                                   SurName = "Lidbom"
+                                               }
+                                  }
+                     };
         }
 
         [Test]
         public void Arrayinitialization()
         {
-            var arr = new int[] {1, 2, 3, 4};
-            var youCanOmmitTheType = new [] { 1, 2, 3, 4 };
+            var arr = new[] {1, 2, 3, 4};
+            var youCanOmmitTheType = new[] {1, 2, 3, 4};
         }
 
         [Test]
         public void CollectionInitialization()
         {
             var ints = new List<List<int>>
-                                   {
-                                       new List<int>{1,2,3,4,5},
-                                       new List<int>{1,2,3,4,5}
-                                   };
+                       {
+                           new List<int> {1, 2, 3, 4, 5},
+                           new List<int> {1, 2, 3, 4, 5}
+                       };
 
             var people = new List<Person>
                          {

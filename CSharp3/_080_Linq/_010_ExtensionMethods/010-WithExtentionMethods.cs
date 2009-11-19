@@ -32,8 +32,8 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
     [TestFixture]
     public class WithExtentionMethods
     {
-		string aDirectory = Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
-		
+        private readonly string aDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+
         [Test]
         public void WhereFilters()
         {

@@ -1,7 +1,7 @@
 using System;
+using System.Linq;
 using NUnit.Framework;
 using Void.Linq;
-using System.Linq;
 
 namespace CSharp3._070_LambdaExpressions
 {
@@ -21,12 +21,11 @@ namespace CSharp3._070_LambdaExpressions
         }
 
 
-
         [Test]
         public void DoesWorkWithParameters()
         {
             var twelweThrough14 = 12.Through(20).Where(me => me < 15);
-            Assert.That(twelweThrough14, Is.EqualTo(12.Through(14)));          
+            Assert.That(twelweThrough14, Is.EqualTo(12.Through(14)));
         }
     }
 }

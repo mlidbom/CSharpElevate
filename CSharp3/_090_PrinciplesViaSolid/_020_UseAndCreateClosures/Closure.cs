@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using NUnit.Framework;
 using Void.Linq;
-using System.Linq;
-using Void;
 
 namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
 {
@@ -30,25 +29,25 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
     /// </summary>
     [TestFixture]
     public class Closure
-    {		
+    {
         [Test]
         public void YourOperationIsEasylyComposableWithAllTheOtherClosedOperationsOnTheSet()
         {
             //ConsecutivePairs becomes an int
-            Enumerable.Range(1,10).ConsecutivePairs().ForEach(Console.WriteLine);
+            Enumerable.Range(1, 10).ConsecutivePairs().ForEach(Console.WriteLine);
         }
 
         [Test]
         public void TransformAndDoAllowsYouToWriteThingsInTheOrderTheyShouldBeExecutedWithoutUsingTemporaryVariables()
-        {			
+        {
             //task: print a comma separated list of the names of the files on your Desktop                        
 
-			string aDirectory = Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+            var aDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             //Doing it the good old way.
             //No extension methods, no lambdas.
             var filePaths = Directory.GetFiles(aDirectory);
             var fileNames = new string[filePaths.Length];
-            for (int i = 0; i < filePaths.Length; i++ )
+            for (var i = 0; i < filePaths.Length; i++)
             {
                 fileNames[i] = Path.GetFileName(filePaths[i]);
             }
@@ -95,9 +94,9 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
             //Now let's try it using lambdas and my extension methods 
             //Transform and Do as well as the Linq extension methods Select and ToArray
             aDirectory.Transform(me => Directory.GetFiles(me))
-                  .Select(me => Path.GetFileName(me))
-                  .Transform(me => string.Join(",", me.ToArray()))
-                  .Do(Console.WriteLine);
+                .Select(me => Path.GetFileName(me))
+                .Transform(me => string.Join(",", me.ToArray()))
+                .Do(Console.WriteLine);
 
             #region comments
 
@@ -118,18 +117,20 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
     {
         public static IEnumerable<T> SkipOneForEvery<T>(this IEnumerable<T> me, int interval)
         {
-            int current = interval;
+            var current = interval;
             foreach (var instance in me)
             {
-                if(current-- > 0)
+                if (current-- > 0)
                 {
                     yield return instance;
-                }else
+                }
+                else
                 {
                     current = interval;
                 }
-            }            
-        } 
+            }
+        }
+
         /// <summary>
         /// A closed operation of the set of IEnumerables that
         /// return a new IEnumerable that is an IEnumerable of the 

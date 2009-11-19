@@ -32,13 +32,13 @@ namespace CSharp3._001_Intro
         private static long SizeOfFolderClassic(string folder)
         {
             long result = 0;
-            string[] subFolders = Directory.GetDirectories(folder);
+            var subFolders = Directory.GetDirectories(folder);
             foreach (var subFolder in subFolders)
             {
                 result += SizeOfFolderClassic(subFolder);
             }
 
-            string[] files = Directory.GetFiles(folder);
+            var files = Directory.GetFiles(folder);
             foreach (var file in files)
             {
                 result += new FileInfo(file).Length;
@@ -48,7 +48,7 @@ namespace CSharp3._001_Intro
         }
 
         #endregion
-            
+
         #region And what's wrong with that?
 
         // Fetching data, recursive descent tree walking, 
@@ -93,15 +93,15 @@ namespace CSharp3._001_Intro
         [Test]
         public void BothReturnNonSeroSizesThatAreTheSame()
         {
-            string folder = Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
+            var folder = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             var sizeClassic = SizeOfFolderClassic(folder);
             var sizeSane = SizeOfFolderSane(folder);
-            var sizeBest = SizeOfFolderTheBestWay(folder); 
+            var sizeBest = SizeOfFolderTheBestWay(folder);
 
             Assert.That(sizeClassic, Is.EqualTo(sizeSane));
             Assert.That(sizeBest, Is.EqualTo(sizeSane));
             Console.WriteLine(sizeSane); //Compare with total commander...            
-            Console.WriteLine(sizeBest); 
+            Console.WriteLine(sizeBest);
         }
 
         #endregion

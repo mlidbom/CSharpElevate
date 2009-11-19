@@ -88,7 +88,6 @@ namespace CSharp3._200_MindBenders
             Assert.That(Second(twoAndFour), Is.EqualTo(4));
         }
 
-
         #region Deep woodoo
 
         private readonly Func<int, int, Func<Func<int, int, int>, int>> MakePair = (first, second) => selector => selector(first, second);
@@ -96,7 +95,7 @@ namespace CSharp3._200_MindBenders
         private readonly Func<Func<Func<int, int, int>, int>, int> Second = pair => pair((_, second) => second);
 
         //C# is not a bit noisy huh? Would you look at those type definitions!
-        
+
         //Here's the same in F# with the twist that these pairs are once again 
         //fully generic and closed over the set of all objects:
         //

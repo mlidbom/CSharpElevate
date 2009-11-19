@@ -1,8 +1,8 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
-using NUnit.Framework;
 using CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures;
+using NUnit.Framework;
 using Void.Linq;
 
 namespace CSharp3._080_Linq._015_Lazyness
@@ -19,12 +19,11 @@ namespace CSharp3._080_Linq._015_Lazyness
         {
             Console.WriteLine("Facebook has just over 1.5 petabytes of users' photos stored,\ntranslating into roughly 10 billion photos\n");
 
-            Func<double, long> toPetaBytes = i => (long)(i / Math.Pow(1000, 5));
+            Func<double, long> toPetaBytes = i => (long) (i / Math.Pow(1000, 5));
             Math.Pow(int.MaxValue, 2)
                 .Transform(numberOfIntegers => numberOfIntegers * 4)
                 .Transform(toPetaBytes)
-                .Do(me => Console.WriteLine("Generating {0} petabytes of lazy data...\n", me));            
-
+                .Do(me => Console.WriteLine("Generating {0} petabytes of lazy data...\n", me));
 
             #region start timing
 
