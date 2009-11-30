@@ -41,11 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_030_Parameters\_010_Named.cs" />
+    <Compile Include="_030_Parameters\_020_Optional.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="_020_Variance\" />
-    <Folder Include="_030_Parameters\010_Named\" />
-    <Folder Include="_030_Parameters\_020_Optional\" />
     <Folder Include="_050_Dynamic\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
