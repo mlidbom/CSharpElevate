@@ -9,7 +9,7 @@ namespace CSharp3._070_LambdaExpressions
     public class WithTypeInference
     {
         [Test]
-        public void DoesNotWorkWithLambdasAndVaribles()
+        public void DoesNotWorkWithLambdasAndVariables()
         {
             var square1 = new Func<int, int>(x => x * x);
             Assert.That(square1(2), Is.EqualTo(4));
@@ -24,7 +24,7 @@ namespace CSharp3._070_LambdaExpressions
         [Test]
         public void DoesWorkWithParameters()
         {
-            var twelweThrough14 = 12.Through(20).Where(me => me < 15);
+            var twelweThrough14 = 12.Through(20).Where(me => me < 15/*you can use lambdas as parameters*/);
             Assert.That(twelweThrough14, Is.EqualTo(12.Through(14)));
         }
     }

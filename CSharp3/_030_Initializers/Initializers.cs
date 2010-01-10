@@ -36,7 +36,7 @@ namespace CSharp3._030_Initializers
         [Test]
         public void Arrayinitialization()
         {
-            var arr = new[] {1, 2, 3, 4};
+            var arr = new int[] {1, 2, 3, 4};
             var youCanOmmitTheType = new[] {1, 2, 3, 4};
         }
 

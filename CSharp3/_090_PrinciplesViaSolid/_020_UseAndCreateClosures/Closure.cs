@@ -10,7 +10,7 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
     /// <summary>
     /// A closure in math is different from the meaning of closure in programming.
     /// In math a set Y is said to be closed over an operation X 
-    /// if the operation X applied to any member of Y results is a member of Y
+    /// if the result of the operation X applied to any member of Y is a member of Y
     /// 
     /// Why is the mathematical idea of closure important? Because it 
     /// makes building immensely complex logic a simple case of combining
@@ -33,7 +33,6 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
         [Test]
         public void YourOperationIsEasylyComposableWithAllTheOtherClosedOperationsOnTheSet()
         {
-            //ConsecutivePairs becomes an int
             Enumerable.Range(1, 10).ConsecutivePairs().ForEach(Console.WriteLine);
         }
 
@@ -132,7 +131,7 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
         }
 
         /// <summary>
-        /// A closed operation of the set of IEnumerables that
+        /// A closed operation over the set of IEnumerables that
         /// return a new IEnumerable that is an IEnumerable of the 
         /// objects in the first IEnuerable paired consecutively
         /// (1,2,3,4,5,6) -> ((1,2),(3,4),(5,6))

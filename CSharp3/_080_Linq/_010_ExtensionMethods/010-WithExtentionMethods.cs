@@ -32,80 +32,87 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
     [TestFixture]
     public class WithExtentionMethods
     {
-        private readonly string aDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        private static readonly string ADirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
         [Test]
         public void WhereFilters()
         {
-            1.Through(10).Where(number => number % 2 != 0)
-                .ForEach(Console.WriteLine);
+            var oddsIn1Through10 = 1.Through(10).Where(number => number%2 != 0);
+            Assert.That(oddsIn1Through10, Is.EqualTo(Seq.Create(1,3,5,7,9)));
         }
 
         [Test]
         public void SelectTransforms()
         {
-            Directory.GetFiles(aDirectory)
-                .Select(me => new FileInfo(me))
-                .ForEach(Console.WriteLine);
+            var doubleOf1Through4 = 1.Through(4).Select(me => me * 2);
+            Assert.That(doubleOf1Through4, Is.EqualTo(Seq.Create(2,4,6,8)));
         }
 
         [Test]
         public void SumSums()
         {
-            Directory.GetFiles(aDirectory)
-                .Sum(me => new FileInfo(me).Length)
-                .Do(Console.WriteLine);
+            var sumOf1Through4 = 1.Through(4).Sum();
+            var sumOf1Through4Explicit = 1.Through(4).Sum(me => me);
+
+            Assert.That(sumOf1Through4, Is.EqualTo(10));
+            Assert.That(sumOf1Through4Explicit, Is.EqualTo(10));
         }
 
         [Test]
         public void AggregateAggregatesAndTransforms()
         {
-            Directory.GetFiles(aDirectory)
-                .Aggregate((aggregate, file) => aggregate + "," + file)
-                .Do(Console.WriteLine);
+            var oneThrough4AsStrings = 1.Through(4)
+                .Select(me => me.ToString())
+                .Aggregate((aggregate, file) => aggregate + "," + file);
 
-            1.Through(10)
-                .Aggregate(0, (sum, current) => sum + current)
-                .Do(Console.WriteLine); //You should really use Sum in this specific case :)
+            Assert.That(oneThrough4AsStrings, Is.EqualTo("1,2,3,4"));
+
+
+            var sumOf1Through4  = 1.Through(4)
+                .Aggregate(0, (sum, current) => sum + current);
+
+            Assert.That(sumOf1Through4, Is.EqualTo(10));
         }
 
         [Test]
         public void SelectManyFlattens()
         {
-            var ints = new[] {new[] {1, 2}, new[] {3, 4}};
-            ints.SelectMany(me => me).ForEach(Console.WriteLine);
+            var oneThrough4Grouped = Seq.Create(Seq.Create(1, 2), Seq.Create(3, 4));
+            var oneThrough4Sequential = oneThrough4Grouped.SelectMany(me => me);
+            Assert.That(oneThrough4Sequential, Is.EqualTo(Seq.Create(1,2,3,4)));
         }
 
         [Test]
         public void DistinctRemovesDuplicates()
         {
-            Seq.Create(1, 1, 2, 2, 3, 3, 4, 5).Distinct().ForEach(Console.WriteLine);
+            var oneThrough5WithDuplicates = Seq.Create(1, 1, 2, 2, 3, 3, 4, 5);
+            var oneThrough5Unique = oneThrough5WithDuplicates.Distinct();
+            Assert.That(oneThrough5Unique, Is.EqualTo(Seq.Create(1,2,3,4,5)));
         }
 
         [Test]
         public void ExceptFiltersOutAllElementsInTheArgumentSequence()
         {
-            1.Through(5).Except(2.Through(4)).ForEach(Console.WriteLine);
+            var oneThrough5Except2Through4 = 1.Through(5).Except(2.Through(4));
+            Assert.That(oneThrough5Except2Through4, Is.EqualTo(Seq.Create(1,5)));
         }
 
         [Test]
         public void GroupByGroups()
         {
             Func<int, bool> isEven = me => me % 2 == 0;
-            1.Through(10).GroupBy(isEven)
-                .ForEach(group =>
-                         {
-                             Console.WriteLine("Even? {0}", group.Key);
-                             group.ForEach(Console.WriteLine);
-                             Console.WriteLine();
-                         }
-                );
+            var groupedByEvenUneven = 1.Through(10).GroupBy(isEven);
+            var even = groupedByEvenUneven.Where(grouping => grouping.Key == true).First();
+            var odd = groupedByEvenUneven.Where(grouping => grouping.Key == false).First();
+            
+            Assert.That(even, Is.EqualTo(Seq.Create(2, 4, 6, 8, 10)));
+            Assert.That(odd, Is.EqualTo(Seq.Create(1, 3, 5, 7, 9)));
         }
 
         [Test]
         public void RememberMe()
         {
-            aDirectory.AsHierarchy(Directory.GetDirectories).Flatten()
+            ADirectory.AsHierarchy(Directory.GetDirectories).Flatten()
                 .SelectMany(dir => Directory.GetFiles(dir.Wrapped))
                 .Sum(file => new FileInfo(file).Length)
                 .Do(Console.WriteLine);
@@ -116,7 +123,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
             //Recursive tree walk. Finds all folders below and including "folder" 
             //by recursively calling Directory.GetDirectories
             //and yielding each one
-            var sizeOfFolder = aDirectory.AsHierarchy(Directory.GetDirectories).Flatten()
+            var sizeOfFolder = ADirectory.AsHierarchy(Directory.GetDirectories).Flatten()
 
                 //transforms the IEnumerable of folder names into an 
                 //IEnumerable of string[]with all the files in each folder

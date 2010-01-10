@@ -7,6 +7,7 @@ namespace CSharp3._050_ExtensionMethods
     //Class hosting extension methods must be static
     public static class Extensions
     {
+        //the "this" keyword marks a parameter as being the equivalent of the this reference in a normal member method.
         public static void ForEach<T>(this IEnumerable<T> me, Action<T> action)
         {
             foreach (var value in me)

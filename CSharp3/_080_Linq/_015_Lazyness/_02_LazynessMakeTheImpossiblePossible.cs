@@ -15,13 +15,12 @@ namespace CSharp3._080_Linq._015_Lazyness
     public class _02_LazynessMakeTheImpossiblePossible
     {
         [Test]
-        public void UseIntMaxvalueSquaredIntegersToFindTheFirst100NumbersDivisibleBy5()
+        public void UseIntMaxvalueSquaredIntegersToFindTheFirst10NumbersDivisibleBy5()
         {
             Console.WriteLine("Facebook has just over 1.5 petabytes of users' photos stored,\ntranslating into roughly 10 billion photos\n");
 
             Func<double, long> toPetaBytes = i => (long) (i / Math.Pow(1000, 5));
             Math.Pow(int.MaxValue, 2)
-                .Transform(numberOfIntegers => numberOfIntegers * 4)
                 .Transform(toPetaBytes)
                 .Do(me => Console.WriteLine("Generating {0} petabytes of lazy data...\n", me));
 
@@ -44,7 +43,7 @@ namespace CSharp3._080_Linq._015_Lazyness
 
             #endregion
 
-            Console.WriteLine("Searching...\n");
+            Console.WriteLine("Searching for first 10 numbers divisible by 5...\n");
 
             intMaxValueSquaredInLength
                 .Where(i => i % 5 == 0)
@@ -58,7 +57,7 @@ namespace CSharp3._080_Linq._015_Lazyness
             #endregion
 
             //JUST DON'T CALLY ANY OPERATORS THAT FORCE ITERATION: 
-            //var theReallyLongWait = intMaxValueSquaredInLength.Count(); //Don't do this. It will take "some" time
+            //var theReallyLongWait = intMaxValueSquaredInLength.Count(); //Don't do this. It will take "some time"
         }
     }
 }

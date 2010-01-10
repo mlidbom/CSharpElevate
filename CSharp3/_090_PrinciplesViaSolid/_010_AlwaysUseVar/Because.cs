@@ -8,7 +8,7 @@ using Void.Linq;
 namespace CSharp3._090_PrinciplesViaSolid._010_AlwaysUseVar
 {
     /// <summary>
-    /// Use replace explicit with var Resharper code cleanup on your codebase!
+    /// Use replace explicit with var Resharper code cleanup on your codebase..
     /// 
     /// When you use var rather than explicit types 
     /// the good design principle of using as narrow
