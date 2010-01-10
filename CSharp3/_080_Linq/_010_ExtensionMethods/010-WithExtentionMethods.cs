@@ -10,13 +10,13 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
 {
     /// <summary>
     ///     
-    /// Again and again pretty much in most codefiles you see reinvention of   
+    /// Again and again, in most codefiles you see reinvention of   
     ///     filtering
     ///     transforming
     ///     sorting
     ///     aggregating
     ///     combining
-    ///     The list goes on and on.
+    ///     etc etc
     /// 
     /// Talk about a code smell. Remember DRY?
     /// The functional programming world is laughing at us. 
@@ -106,7 +106,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         public void RememberMe()
         {
             aDirectory.AsHierarchy(Directory.GetDirectories).Flatten()
-                .SelectMany(dir => Directory.GetFiles(dir))
+                .SelectMany(dir => Directory.GetFiles(dir.Wrapped))
                 .Sum(file => new FileInfo(file).Length)
                 .Do(Console.WriteLine);
 
@@ -120,7 +120,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
 
                 //transforms the IEnumerable of folder names into an 
                 //IEnumerable of string[]with all the files in each folder
-                .Select(currentDirectory => Directory.GetFiles(currentDirectory))
+                .Select(currentDirectory => Directory.GetFiles(currentDirectory.Wrapped))
 
                 //flattens the IEnumerable of string[] into an IEnumerable of string
                 .SelectMany(files => files)

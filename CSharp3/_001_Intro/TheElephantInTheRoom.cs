@@ -77,7 +77,7 @@ namespace CSharp3._001_Intro
         private static long SizeOfFolderSane(string folder)
         {
             return folder.AsHierarchy(Directory.GetDirectories).Flatten()
-                .SelectMany(dir => Directory.GetFiles(dir))
+                .SelectMany(dir => Directory.GetFiles(dir.Wrapped))
                 .Sum(file => new FileInfo(file).Length);
         }
 
