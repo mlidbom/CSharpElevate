@@ -6,21 +6,6 @@ namespace CSharp3._001_Prerequisites._010_Enumerators
     [TestFixture]
     public class Enumerators
     {
-        [Test]
-        public void MakeImplementingIEnumerableReallySimple()
-        {
-            var current = 0;
-            foreach (var i in AllInts)
-            {
-                Assert.That(i, Is.EqualTo(current++));
-                if (current > 10)
-                {
-                    break;
-                }
-            }
-        }
-
-
         ///The magic happens because we use the yield keyword. 
         ///It causes the compiler to essentially replace this method with a class 
         ///that implements IEnumerable in such a way as to make each call to 
@@ -34,6 +19,20 @@ namespace CSharp3._001_Prerequisites._010_Enumerators
                 while (current < int.MaxValue)
                 {
                     yield return current++;
+                }
+            }
+        }
+
+        [Test]
+        public void MakeImplementingIEnumerableReallySimple()
+        {
+            var current = 0;
+            foreach (var i in AllInts)
+            {
+                Assert.That(i, Is.EqualTo(current++));
+                if (current > 10)
+                {
+                    break;
                 }
             }
         }
