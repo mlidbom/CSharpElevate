@@ -49,10 +49,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Void\lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Void.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Void\Core\bin\Debug\Void.Core.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="_001_Intro\TheElephantInTheRoom.cs" />
@@ -81,6 +77,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="_100_PuttingItAllTogether\readme.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Void\Core\Core.csproj">
+      <Project>{3632254D-0C4A-4EB8-B388-4C99F8939584}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
