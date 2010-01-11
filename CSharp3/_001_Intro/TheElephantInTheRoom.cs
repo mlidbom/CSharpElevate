@@ -25,11 +25,11 @@ namespace CSharp3._001_Intro
         #region The wrong way
 
         /// <summary>
-        /// This is about how I usually see code like this.
+        /// This is how I usually see code like this.
         /// Unless the coder is afraid of recursion and makes 
         /// it far uglier still that is!
         /// </summary>
-        private static long SizeOfDirectoryClassic(string directory)
+        public static long SizeOfDirectoryClassic(string directory)
         {
             long result = 0;
             var subDirectorys = Directory.GetDirectories(directory);
@@ -51,7 +51,8 @@ namespace CSharp3._001_Intro
 
         #region And what's wrong with that?
 
-        // Fetching data, recursive descent tree walking, 
+        // String to directory conversion, 
+        // Fetching data, recursive descent, 
         // transforming data, and data aggregation 
         // is all baked into one big mess.
         //
@@ -69,6 +70,10 @@ namespace CSharp3._001_Intro
         //
         //2. DRY since you are reinventing the wheel several times over.
         //
+        //3. OCP since changing algorithms will change the function, 
+        // not only changes in domain rules for it primary purpose as it should be
+        //
+        //
 
         #endregion
 
@@ -83,12 +88,24 @@ namespace CSharp3._001_Intro
                 .Sum(file => new FileInfo(file).Length);
         }
 
-        private static long SizeOfDirectoryAcceptable(string path)
-        {
-            return path.AsDirectory().Size();
-        }
+        #region still complaining!?
+        //Yes!
+        //The code still works at several levels of abstraction. 
+        //The discoverability of an ordinary static method is terrible so dry is likely to be violated.
+        #endregion
 
         #endregion
+
+        #region getting there
+        
+        private static long SizeOfDirectoryAcceptable(string path)
+        {
+            //The line below code would likely be inlined in real code. 
+            //This method serves little purpose once it's implementation has been refactored to this stage.
+            return path.AsDirectory().Size();
+        }
+        
+        #endregion 
 
         #region Yes it works
 
