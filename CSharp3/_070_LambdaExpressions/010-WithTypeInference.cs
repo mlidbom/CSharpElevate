@@ -6,7 +6,7 @@ using Void.Linq;
 namespace CSharp3._070_LambdaExpressions
 {
     [TestFixture]
-    public class WithTypeInference
+    public class TypeInference
     {
         [Test]
         public void DoesNotWorkWithLambdasAndVariables()
