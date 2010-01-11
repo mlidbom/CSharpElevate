@@ -54,7 +54,7 @@ namespace CSharp3._001_Intro
         // String to directory conversion, 
         // Fetching data, recursive descent, 
         // transforming data, and data aggregation 
-        // is all baked into one big mess.
+        // are all baked into one big mess.
         //
         // Code should do one thing at a time in clear and easy to read steps.        
         //        
