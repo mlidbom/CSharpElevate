@@ -18,16 +18,13 @@ namespace CSharp3._030_Initializers
         {
             var me = new Person
                      {
-                         ForeName = "Magnus",
-                         SurName = "Lidbom",
+                         ForeName = "Magnus", SurName = "Lidbom",
                          Father = new Person
                                   {
-                                      ForeName = "Lars",
-                                      SurName = "Lidbom",
+                                      ForeName = "Lars", SurName = "Lidbom",
                                       Father = new Person
                                                {
-                                                   ForeName = "Tage",
-                                                   SurName = "Lidbom"
+                                                   ForeName = "Tage", SurName = "Lidbom"
                                                }
                                   }
                      };
