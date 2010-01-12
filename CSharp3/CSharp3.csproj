@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Util\NUnitTestBase.cs" />
     <Compile Include="_001_Intro\TheElephantInTheRoom.cs" />
     <Compile Include="_005_Prerequisites\_010_Enumerators\Enumerators.cs" />
     <Compile Include="_010_TypeInference\TypeInference.cs" />

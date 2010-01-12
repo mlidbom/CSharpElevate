@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Linq;
 using CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures;
+using CSharp3.Util;
 using NUnit.Framework;
 using Void.Hierarchies;
 using Void.Linq;
@@ -30,7 +31,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
     ///     
     /// </summary>
     [TestFixture]
-    public class WithExtentionMethods
+    public class WithExtentionMethods : NUnitTestBase
     {
         private static readonly string ADirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
@@ -102,8 +103,8 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         {
             Func<int, bool> isEven = me => me % 2 == 0;
             var groupedByEvenUneven = 1.Through(10).GroupBy(isEven);
-            var even = groupedByEvenUneven.Where(grouping => grouping.Key == true).First();
-            var odd = groupedByEvenUneven.Where(grouping => grouping.Key == false).First();
+            var even = groupedByEvenUneven.Where(grouping => grouping.Key).Single();
+            var odd = groupedByEvenUneven.Where(grouping => !grouping.Key).Single();
             
             Assert.That(even, Is.EqualTo(Seq.Create(2, 4, 6, 8, 10)));
             Assert.That(odd, Is.EqualTo(Seq.Create(1, 3, 5, 7, 9)));

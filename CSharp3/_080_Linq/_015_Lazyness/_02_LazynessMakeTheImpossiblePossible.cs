@@ -19,7 +19,7 @@ namespace CSharp3._080_Linq._015_Lazyness
         {
             Console.WriteLine("Facebook has just over 1.5 petabytes of users' photos stored,\ntranslating into roughly 10 billion photos\n");
 
-            Func<double, long> toPetaBytes = i => (long) (i / Math.Pow(1000, 5));
+            Func<double, long> toPetaBytes = i => (long) (i / Math.Pow(10, 15));
             Math.Pow(int.MaxValue, 2)
                 .Transform(toPetaBytes)
                 .Do(me => Console.WriteLine("Generating {0} petabytes of lazy data...\n", me));
