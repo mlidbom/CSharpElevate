@@ -12,7 +12,7 @@ namespace CSharp3._080_Linq._015_Lazyness
     /// This is why:
     /// </summary>
     [TestFixture]
-    public class _02_LazynessMakeTheImpossiblePossible
+    public class _02_MakeTheImpossiblePossible
     {
         [Test]
         public void UseIntMaxvalueSquaredIntegersToFindTheFirst10NumbersDivisibleBy5()
