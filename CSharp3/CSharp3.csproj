@@ -63,6 +63,8 @@
     <Compile Include="_070_LambdaExpressions\005-Intro.cs" />
     <Compile Include="_070_LambdaExpressions\020-Closures.cs" />
     <Compile Include="_070_LambdaExpressions\010-WithTypeInference.cs" />
+    <Compile Include="_070_LambdaExpressions\ExpressionTrees.cs" />
+    <Compile Include="_080_Linq\_010_ExtensionMethods\_20_QueryableDemo.cs" />
     <Compile Include="_080_Linq\_015_Lazyness\_02_LazynessMakeTheImpossiblePossible.cs" />
     <Compile Include="_090_PrinciplesViaSolid\_020_UseAndCreateClosures\Closure.cs" />
     <Compile Include="_200_MindBenders\_005_LinqTricks.cs" />
