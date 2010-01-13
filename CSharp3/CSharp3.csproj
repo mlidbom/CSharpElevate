@@ -64,12 +64,13 @@
     <Compile Include="_070_LambdaExpressions\020-Closures.cs" />
     <Compile Include="_070_LambdaExpressions\010-WithTypeInference.cs" />
     <Compile Include="_070_LambdaExpressions\ExpressionTrees.cs" />
-    <Compile Include="_080_Linq\_010_ExtensionMethods\_20_QueryableDemo.cs" />
-    <Compile Include="_080_Linq\_015_Lazyness\_02_LazynessMakeTheImpossiblePossible.cs" />
+    <Compile Include="_075_ActionFunc\ActionAndFunc.cs" />
+    <Compile Include="_080_Linq\_010_ExtensionMethods\020_QueryableDemo.cs" />
+    <Compile Include="_080_Linq\_015_Lazyness\_02_MakeTheImpossiblePossible.cs" />
     <Compile Include="_090_PrinciplesViaSolid\_020_UseAndCreateClosures\Closure.cs" />
     <Compile Include="_200_MindBenders\_005_LinqTricks.cs" />
     <Compile Include="_200_MindBenders\010-TheMagicalPowerOfClosures.cs" />
-    <Compile Include="_090_PrinciplesViaSolid\_010_AlwaysUseVar\Because.cs" />
+    <Compile Include="_090_PrinciplesViaSolid\_010_PreferUsingVar\Because.cs" />
     <Compile Include="_080_Linq\_010_ExtensionMethods\010-WithExtentionMethods.cs" />
     <Compile Include="_080_Linq\_015_Lazyness\_01_DeferredExecution.cs" />
     <Compile Include="_080_Linq\_020_ComprehensionSyntax\SelectStatement.cs" />
