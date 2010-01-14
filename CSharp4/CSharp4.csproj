@@ -47,10 +47,9 @@
     <Compile Include="_020_GenericVariance\020_CovariantInterfaces.cs" />
     <Compile Include="_030_Parameters\_010_Named.cs" />
     <Compile Include="_030_Parameters\_020_Optional.cs" />
+    <Compile Include="_050_Dynamic\010_Dynamic.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="_050_Dynamic\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
