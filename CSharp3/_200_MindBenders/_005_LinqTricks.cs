@@ -40,7 +40,7 @@ namespace CSharp3._200_MindBenders
         private static readonly Func<int, int, bool> IsDivisibleBy = (number, test) => number % test == 0;
 
         //if i is divisible by any number it is not prime
-        private static readonly Func<int, bool> IsPrime = i => 2.Through(i - 1).None(number => IsDivisibleBy(i, number));
+        private static readonly Func<int, bool> IsPrime = possiblePrime => 2.Through(possiblePrime - 1).None(divisor => IsDivisibleBy(possiblePrime, divisor));
 
         [Test]
         public void FindAndPrintAllPrimesBelow100Explained()
