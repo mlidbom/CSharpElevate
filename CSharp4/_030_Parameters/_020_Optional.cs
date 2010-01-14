@@ -5,7 +5,7 @@ namespace CSharp4._030_Parameters
     [TestFixture]
     public class _020_Optional
     {
-        //Helps reduce duplication. No more do you need 5 methods or constructors that call one another just to enable common usages
+        //Helps reduce duplication. No more do you need 5 methods or constructors that call one another just to simplify common usages
         class Configuration
         {
             public Configuration(
