@@ -42,9 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="_020_GenericVariance\AppliesOnlyToInterfacesAndDelegates.cs" />
-    <Compile Include="_020_GenericVariance\CreatedCovariantInterfaces.cs" />
-    <Compile Include="_020_GenericVariance\IClonableVector2D.cs" />
+    <Compile Include="_020_GenericVariance\010_AppliesOnlyToInterfacesAndDelegates.cs" />
+    <Compile Include="_020_GenericVariance\030_ContraVariantInterfaces.cs" />
+    <Compile Include="_020_GenericVariance\020_CovariantInterfaces.cs" />
     <Compile Include="_030_Parameters\_010_Named.cs" />
     <Compile Include="_030_Parameters\_020_Optional.cs" />
   </ItemGroup>

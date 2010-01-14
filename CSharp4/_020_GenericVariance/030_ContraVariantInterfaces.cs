@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace CSharp4._020_Variance
+namespace CSharp4._020_GenericVariance
 {
     internal interface ILogger<in T>
     {
@@ -10,8 +10,7 @@ namespace CSharp4._020_Variance
     internal class Logger<T> : ILogger<T>
     {
         public void Log(T logValue)
-        {
-        }
+        {}
     }
 
     [TestFixture]

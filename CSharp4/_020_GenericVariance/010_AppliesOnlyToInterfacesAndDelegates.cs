@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace CSharp4._020_Variance
+namespace CSharp4._020_GenericVariance
 {
     [TestFixture]
     public class AppliesOnlyToInterfacesAndDelegates
