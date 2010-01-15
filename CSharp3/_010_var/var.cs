@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace CSharp3._010_TypeInference
+namespace CSharp3._010_var
 {
     [TestFixture]
     public class TypeInference
