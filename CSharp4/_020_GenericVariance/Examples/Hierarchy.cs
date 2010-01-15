@@ -39,7 +39,7 @@ namespace CSharp3.Extensions.Hierarchies
             return new[]{root}.FlattenHierarchy(me => me.Children);
         }
 
-        //No longer needed
+        //No longer needed now that we have covariance!
         //public static IEnumerable<T> Unwrap<T>(this IEnumerable<IAutoHierarchy<T>> root)
         //{
         //    return root.Select(me => me.Wrapped);
