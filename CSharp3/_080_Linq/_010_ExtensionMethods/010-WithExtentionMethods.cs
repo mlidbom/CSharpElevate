@@ -41,14 +41,14 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         public void WhereFilters()
         {
             var oddsIn1Through10 = 1.Through(10).Where(number => number%2 != 0);
-            Assert.That(oddsIn1Through10, Is.EqualTo(Seq.Create(1,3,5,7,9)));
+            Assert.That(oddsIn1Through10, Is.EqualTo(Seq.New(1,3,5,7,9)));
         }
 
         [Test]
         public void SelectTransforms()
         {
             var doubleOf1Through4 = 1.Through(4).Select(me => me * 2);
-            Assert.That(doubleOf1Through4, Is.EqualTo(Seq.Create(2,4,6,8)));
+            Assert.That(doubleOf1Through4, Is.EqualTo(Seq.New(2,4,6,8)));
         }
 
         [Test]
@@ -80,24 +80,24 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         [Test]
         public void SelectManyFlattens()
         {
-            var oneThrough4Grouped = Seq.Create(Seq.Create(1, 2), Seq.Create(3, 4));
+            var oneThrough4Grouped = Seq.New(Seq.New(1, 2), Seq.New(3, 4));
             var oneThrough4Sequential = oneThrough4Grouped.SelectMany(me => me);
-            Assert.That(oneThrough4Sequential, Is.EqualTo(Seq.Create(1,2,3,4)));
+            Assert.That(oneThrough4Sequential, Is.EqualTo(Seq.New(1,2,3,4)));
         }
 
         [Test]
         public void DistinctRemovesDuplicates()
         {
-            var oneThrough5WithDuplicates = Seq.Create(1, 1, 2, 2, 3, 3, 4, 5);
+            var oneThrough5WithDuplicates = Seq.New(1, 1, 2, 2, 3, 3, 4, 5);
             var oneThrough5Unique = oneThrough5WithDuplicates.Distinct();
-            Assert.That(oneThrough5Unique, Is.EqualTo(Seq.Create(1,2,3,4,5)));
+            Assert.That(oneThrough5Unique, Is.EqualTo(Seq.New(1,2,3,4,5)));
         }
 
         [Test]
         public void ExceptFiltersOutAllElementsInTheArgumentSequence()
         {
             var oneThrough5Except2Through4 = 1.Through(5).Except(2.Through(4));
-            Assert.That(oneThrough5Except2Through4, Is.EqualTo(Seq.Create(1,5)));
+            Assert.That(oneThrough5Except2Through4, Is.EqualTo(Seq.New(1,5)));
         }
 
         [Test]
@@ -108,8 +108,8 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
             var even = groupedByEvenUneven.Where(grouping => grouping.Key).Single();
             var odd = groupedByEvenUneven.Where(grouping => !grouping.Key).Single();
             
-            Assert.That(even, Is.EqualTo(Seq.Create(2, 4, 6, 8, 10)));
-            Assert.That(odd, Is.EqualTo(Seq.Create(1, 3, 5, 7, 9)));
+            Assert.That(even, Is.EqualTo(Seq.New(2, 4, 6, 8, 10)));
+            Assert.That(odd, Is.EqualTo(Seq.New(1, 3, 5, 7, 9)));
         }
 
         [Test]

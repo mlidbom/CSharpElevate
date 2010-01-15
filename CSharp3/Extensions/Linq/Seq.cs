@@ -6,7 +6,7 @@ namespace CSharp3.Util.Linq
 {
     public static class Seq
     {
-        public static IEnumerable<T> Create<T>(params T[] elements)
+        public static IEnumerable<T> New<T>(params T[] elements)
         {
             return elements;
         }
