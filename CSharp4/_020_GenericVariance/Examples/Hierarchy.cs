@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CSharp3.Util.Hierarchies;
 using CSharp4._020_GenericVariance.Examples;
 
 namespace CSharp3.Extensions.Hierarchies
@@ -39,6 +38,12 @@ namespace CSharp3.Extensions.Hierarchies
         {
             return new[]{root}.FlattenHierarchy(me => me.Children);
         }
+
+        //No longer needed
+        //public static IEnumerable<T> Unwrap<T>(this IEnumerable<IAutoHierarchy<T>> root)
+        //{
+        //    return root.Select(me => me.Wrapped);
+        //}
 
         public static IEnumerable<TSource> FlattenHierarchy<TSource>(this IEnumerable<TSource> source,
                                                                      Func<TSource, IEnumerable<TSource>> childrenSelector)

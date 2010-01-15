@@ -11,6 +11,7 @@ namespace CSharp4._020_GenericVariance.Examples
 
     public static class Wrapper
     {
+        //Removes the need for any inheritors such as IAutoHierarchy to Implement this extension...
         public static IEnumerable<T> Unwrap<T>(this IEnumerable<IWrapper<T>> root)
         {
             return root.Select(me => me.Wrapped);
