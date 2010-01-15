@@ -1,9 +1,9 @@
 using System;
 using System.Diagnostics;
 using System.Linq;
+using CSharp3._050_ExtensionMethods;
 using CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures;
 using NUnit.Framework;
-using Void.Linq;
 
 namespace CSharp3._080_Linq._015_Lazyness
 {

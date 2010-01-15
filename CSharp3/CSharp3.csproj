@@ -51,7 +51,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Util\NUnitTestBase.cs" />
+    <Compile Include="Extensions\Hierarchies\Hierarchy.cs" />
+    <Compile Include="Extensions\Hierarchies\IHierarchy.cs" />
+    <Compile Include="Extensions\IO\DirectoryInfoEx.cs" />
+    <Compile Include="Extensions\Linq\Zipping.cs" />
+    <Compile Include="Extensions\NUnitTestBase.cs" />
+    <Compile Include="Extensions\Linq\Seq.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="_001_Intro\TheElephantInTheRoom.cs" />
     <Compile Include="_005_Prerequisites\_010_Enumerators\Enumerators.cs" />
     <Compile Include="_010_TypeInference\TypeInference.cs" />
@@ -81,12 +87,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="_100_PuttingItAllTogether\readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Void\Core\Core.csproj">
-      <Project>{3632254D-0C4A-4EB8-B388-4C99F8939584}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

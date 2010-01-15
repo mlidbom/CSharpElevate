@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace CSharp3._050_ExtensionMethods
@@ -13,14 +14,6 @@ namespace CSharp3._050_ExtensionMethods
             foreach (var value in me)
             {
                 action(value);
-            }
-        }
-
-        public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> me, Func<TSource, TResult> transform)
-        {
-            foreach (var value in me)
-            {
-                yield return transform(value);
             }
         }
 

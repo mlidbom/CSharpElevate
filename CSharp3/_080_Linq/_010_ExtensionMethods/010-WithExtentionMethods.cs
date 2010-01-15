@@ -1,11 +1,13 @@
 using System;
 using System.IO;
 using System.Linq;
+using CSharp3._050_ExtensionMethods;
 using CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures;
+using CSharp3.Extensions.Hierarchies;
 using CSharp3.Util;
+using CSharp3.Util.Hierarchies;
+using CSharp3.Util.Linq;
 using NUnit.Framework;
-using Void.Hierarchies;
-using Void.Linq;
 
 namespace CSharp3._080_Linq._010_ExtensionMethods
 {

@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSharp3._050_ExtensionMethods;
+using CSharp3.Util.Linq;
 using NUnit.Framework;
-using Void.Linq;
+using CSharp3.Util;
 
 namespace CSharp3._200_MindBenders
 {
