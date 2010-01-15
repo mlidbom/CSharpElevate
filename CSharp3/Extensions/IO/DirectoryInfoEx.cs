@@ -16,7 +16,8 @@ namespace CSharp3.Extensions.IO
             return directory.AsHierarchy(me => me.GetDirectories())
                 .Flatten()
                 .Unwrap()
-                .SelectMany(subdir => subdir.GetFiles())
+                .Select(subdir => subdir.GetFiles())
+                .SelectMany(files => files)
                 .Sum(file => file.Length);
         }
     }
