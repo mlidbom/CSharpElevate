@@ -15,7 +15,8 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
     /// 
     /// Why is the mathematical idea of closure important? Because it 
     /// makes building immensely complex logic a simple case of combining
-    /// existing operations and members of the set. Linq is so hugely powerful because the
+    /// existing operations and operations on, and members of, the set. 
+    /// Linq is so hugely powerful because the
     /// set of all IEnumerable instances is closed over most of the Linq operations
     /// since they take ienumerables and return ienumerables
     /// consider: Transform, Where, Join, SelectMany etc
@@ -23,7 +24,6 @@ namespace CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures
     /// Once you have that property creating powerful abstractions
     /// becomes almost trivial because whatever you create gets the 
     /// ability to be easily combined with what already exists for free.
-    /// 
     /// 
     /// Whenever you design an abstraction, look for the opportunity 
     /// to close it over operations.
