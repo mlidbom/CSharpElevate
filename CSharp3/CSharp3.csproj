@@ -58,6 +58,7 @@
     <Compile Include="Extensions\NUnitTestBase.cs" />
     <Compile Include="Extensions\Linq\Seq.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="ScratchPad.cs" />
     <Compile Include="_001_Intro\TheElephantInTheRoom.cs" />
     <Compile Include="_005_Prerequisites\_010_Enumerators\Enumerators.cs" />
     <Compile Include="_010_var\var.cs" />
