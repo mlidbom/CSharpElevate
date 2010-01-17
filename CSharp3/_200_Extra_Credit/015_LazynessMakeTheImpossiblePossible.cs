@@ -5,14 +5,14 @@ using CSharp3._050_ExtensionMethods;
 using CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures;
 using NUnit.Framework;
 
-namespace CSharp3._080_Linq._015_Lazyness
+namespace CSharp3._200_Extra_Credit
 {
     /// <summary>
     /// As a general rule Linq logic performs spectacularly well.
     /// This is why:
     /// </summary>
     [TestFixture]
-    public class _02_MakeTheImpossiblePossible
+    public class _02_LazynessMakesTheImpossiblePossible
     {
         [Test]
         public void UseIntMaxvalueSquaredIntegersToFindTheFirst10NumbersDivisibleBy5()

@@ -71,7 +71,7 @@
     <Compile Include="_070_LambdaExpressions\030-ExpressionTrees.cs" />
     <Compile Include="_075_ActionFunc\ActionAndFunc.cs" />
     <Compile Include="_080_Linq\_010_ExtensionMethods\020_QueryableDemo.cs" />
-    <Compile Include="_080_Linq\_015_Lazyness\_02_MakeTheImpossiblePossible.cs" />
+    <Compile Include="_200_Extra_Credit\015_LazynessMakeTheImpossiblePossible.cs" />
     <Compile Include="_090_PrinciplesViaSolid\_010_UseAndCreateClosures\Closure.cs" />
     <Compile Include="_100_PuttingItAllTogether\ATaleOfFoldersDirectoriesAndDecorators.cs" />
     <Compile Include="_100_PuttingItAllTogether\TestingNumbersForBeingPrime.cs" />

@@ -40,10 +40,10 @@ namespace CSharp3
         {
             return new[] {"Calle", "Oscar"};
         }
-    }
 
-    public class Person
-    {
-        public string Name { get; set; }
+        private class Person
+        {
+            public string Name { get; set; }
+        }
     }
 }
