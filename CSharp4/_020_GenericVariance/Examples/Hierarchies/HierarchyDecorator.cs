@@ -17,7 +17,7 @@ namespace CSharp4._020_GenericVariance.Examples.Hierarchies
 
             public IEnumerable<IHierarchyDecorator<T>> Children
             {
-                get { return _childGetter(Decorated).Select(child => child.AsHierarchy(_childGetter)); }
+                get { return _childGetter(Decorated).Selectctect(child => child.AsHierarchy(_childGetter)); }
             }
 
             public T Decorated { get; private set; }

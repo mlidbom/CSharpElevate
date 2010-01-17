@@ -1,12 +1,8 @@
+using CSharp4._020_GenericVariance.Examples.Decorator;
 using NUnit.Framework;
 
 namespace CSharp4._020_GenericVariance
 {
-    public interface IDecorator<out T>
-    {
-        T Decorated{ get;}    
-    }
-
     class Decorator<T> : IDecorator<T>
     {
         public T Decorated { get; private set; }
