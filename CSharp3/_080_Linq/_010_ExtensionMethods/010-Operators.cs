@@ -217,8 +217,6 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
 
         #region joining operators
 
-        private readonly IEnumerable<string> _surnames = new[] { "Svensson", "Karlsson" };
-
         readonly IEnumerable<Person> _women = new[] {new Person{Surname = "Svensson", Forename = "Lisa"},
                                                      new Person{Surname = "Karlsson", Forename = "Kerstin"}};
 
@@ -279,8 +277,8 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         #region support
         private class Person
         {
-            public string Forename { get; set; }
-            public string Surname { get; set; }
+            public string Forename;
+            public string Surname;
             public override string ToString()
             {
                 return string.Format("{{ Forename = {0}, SurName = {1} }}", Forename, Surname);
