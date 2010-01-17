@@ -53,7 +53,6 @@
   <ItemGroup>
     <Compile Include="Extensions\Hierarchies\Hierarchy.cs" />
     <Compile Include="Extensions\Hierarchies\HierarchyDecorator.cs" />
-    <Compile Include="Extensions\Hierarchies\IHierarchy.cs" />
     <Compile Include="Extensions\IO\DirectoryInfoEx.cs" />
     <Compile Include="Extensions\Linq\Zipping.cs" />
     <Compile Include="Extensions\NUnitTestBase.cs" />

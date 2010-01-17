@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CSharp3.Util.Hierarchies;
 
 namespace CSharp3.Extensions.Hierarchies
 {
@@ -42,9 +41,9 @@ namespace CSharp3.Extensions.Hierarchies
 
         public static IEnumerable<T> FlattenHierarchy<T>(this T me, Func<T, IEnumerable<T>> childGetter)
         {
-            return me.AsHierarchy(childGetter)
-                .FlattenHierarchy()
-                .Undecorate();
+            return me.AsHierarchy(childGetter)//Decorator
+                .FlattenHierarchy()//Hierarchy
+                .Undecorate();//Decorator
         }
     }
 }

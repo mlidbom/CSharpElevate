@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
-using CSharp3.Util.Hierarchies;
 using CSharp3.Util.Linq;
 
 namespace CSharp3.Extensions.Hierarchies
 {
+    public interface IHierarchy<T> where T : IHierarchy<T>
+    {
+        IEnumerable<T> Children { get; }
+    }
+
     public static class Hierarchy
     {
         public static IEnumerable<T> FlattenHierarchy<T>(this T root) where T : IHierarchy<T>

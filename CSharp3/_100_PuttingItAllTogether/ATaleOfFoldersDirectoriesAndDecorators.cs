@@ -15,6 +15,14 @@ namespace CSharp3._100_PuttingItAllTogether
         [Test]
         public void DecomposingFolderSizeInteRolesAndResponsibilities()
         {
+            //Defined in the implementation :
+
+            //Every interface and class is immutable.
+            //Every method is a pure function.
+            //Every metod is an extension method. (Virtual data is exposed as properties, not methods)
+            //Every class, interface, and method has a single well defined responsibility.
+
+            //Note the correlation between responsibility and code
             long directorySize = DesktopDirectory.Size();
         }
     }
