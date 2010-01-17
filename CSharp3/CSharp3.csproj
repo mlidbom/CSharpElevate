@@ -90,6 +90,9 @@
   <ItemGroup>
     <Content Include="_100_PuttingItAllTogether\readme.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="_090_PrinciplesViaSolid\PreferExtensionmethods_See_Presentation\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
