@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using CSharp3._050_ExtensionMethods;
-using CSharp3._090_PrinciplesViaSolid._020_UseAndCreateClosures;
 using NUnit.Framework;
 
 namespace CSharp3._200_Extra_Credit
