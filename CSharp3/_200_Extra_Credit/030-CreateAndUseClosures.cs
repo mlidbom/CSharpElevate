@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using CSharp3.Extensions;
+using CSharp3.Util;
 using CSharp3.Util.Linq;
 using NUnit.Framework;
 using CSharp3._050_ExtensionMethods;
@@ -58,15 +60,8 @@ namespace CSharp3._200_Extra_Credit
             // Skip is provided my Microsoft, I built Zip and SkipOneForEvery, but they 
             //play together completely seamlessly because they close over the set 
             //of all IEnumerable.
-            return me.Zip(me.Skip(1)).SkipOneForEvery(1);
-        }
-
-        /// <summary>
-        /// Applies a transformation to any object. 
-        /// </summary>
-        public static TReturn Transform<TSource, TReturn>(this TSource me, Func<TSource, TReturn> transform)
-        {
-            return transform(me);
+            return me.Zip(me.Skip(1))
+                     .SkipOneForEvery(1);
         }
 
         /// <summary>Executes action with me as the parameter.</summary>

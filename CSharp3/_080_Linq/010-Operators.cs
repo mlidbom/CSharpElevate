@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CSharp3._050_ExtensionMethods;
+using CSharp3.Extensions;
 using CSharp3.Util;
 using NUnit.Framework;
 
 namespace CSharp3._080_Linq
 {
     [TestFixture]
-    public class Operators : NUnitTestBase
+    public class Operators
     {
         private static IEnumerable<T> Seq<T>(params T[] elements)
         {

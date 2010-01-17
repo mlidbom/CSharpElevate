@@ -2,7 +2,7 @@ using System;
 using NUnit.Framework;
 using NUnit.Framework.Constraints;
 
-namespace CSharp3.Util
+namespace CSharp3.Extensions
 {
     public class NUnitTestBase : AssertionHelper
     {

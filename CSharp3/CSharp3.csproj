@@ -55,7 +55,6 @@
     <Compile Include="Extensions\Hierarchies\HierarchyDecorator.cs" />
     <Compile Include="Extensions\IO\DirectoryInfoEx.cs" />
     <Compile Include="Extensions\Linq\Zipping.cs" />
-    <Compile Include="Extensions\NUnitTestBase.cs" />
     <Compile Include="Extensions\Linq\Seq.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
     <Compile Include="ScratchPad.cs" />
@@ -81,6 +80,9 @@
     <Compile Include="_080_Linq\010-Operators.cs" />
     <Compile Include="_080_Linq\015_DeferredExecution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="_200_Extra_Credit\030-CreateAndUseClosures.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
