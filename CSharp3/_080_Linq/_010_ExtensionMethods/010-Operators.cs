@@ -269,6 +269,14 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
 
         #endregion
 
+
+
+
+
+
+
+
+        #region support
         private class Person
         {
             public string Forename { get; set; }
@@ -278,5 +286,6 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
                 return string.Format("{{ Forename = {0}, SurName = {1} }}", Forename, Surname);
             }
         }
+        #endregion
     }
 }
