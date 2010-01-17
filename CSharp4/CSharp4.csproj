@@ -45,10 +45,10 @@
     <Compile Include="_020_GenericVariance\010_AppliesOnlyToInterfacesAndDelegates.cs" />
     <Compile Include="_020_GenericVariance\030_ContraVariantInterfaces.cs" />
     <Compile Include="_020_GenericVariance\020_CovariantInterfaces.cs" />
-    <Compile Include="_020_GenericVariance\Examples\Hierarchy.cs" />
-    <Compile Include="_020_GenericVariance\Examples\IHierarchy.cs" />
+    <Compile Include="_020_GenericVariance\Examples\Decorator\Decorator.cs" />
+    <Compile Include="_020_GenericVariance\Examples\Hierarchies\Hierarchy.cs" />
+    <Compile Include="_020_GenericVariance\Examples\Hierarchies\HierarchyDecorator.cs" />
     <Compile Include="_020_GenericVariance\Examples\IO\DirectoryInfoEx.cs" />
-    <Compile Include="_020_GenericVariance\Examples\IWrapper.cs" />
     <Compile Include="_030_Parameters\_010_Named.cs" />
     <Compile Include="_030_Parameters\_020_Optional.cs" />
     <Compile Include="_050_Dynamic\010_Dynamic.cs" />

@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace CSharp4._020_GenericVariance
 {
-    interface IDecorator<out T>
+    public interface IDecorator<out T>
     {
         T Decorated{ get;}    
     }
