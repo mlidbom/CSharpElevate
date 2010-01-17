@@ -210,13 +210,14 @@ namespace CSharp3._080_Linq
         #region grouping
 
         [Test]
-        public void GroupByGroups()
+        public void GroupBy()
         {
-            Func<int, bool> isEven = me => me%2 == 0;
-            
-            var groupedByEvenUneven = 1.Through(4).GroupBy(isEven);//{{1,3},{2,4}}
+            Func<int, bool> isEven = me => me%2 == 0;           
 
-            var even = groupedByEvenUneven.Where(grouping => grouping.Key).Single();//{2,4}
+            var even = 1.Through(4)
+                        .GroupBy(isEven)
+                        .Where(grouping => grouping.Key)
+                        .Single();//{2,4}
 
             even = (from number in 1.Through(4)
                     group number by isEven(number)
@@ -229,41 +230,65 @@ namespace CSharp3._080_Linq
 
         #region joining operators
 
-        readonly IEnumerable<Person> _women = new[] {new Person{Surname = "Svensson", Forename = "Lisa"},
-                                                     new Person{Surname = "Karlsson", Forename = "Kerstin"}};
+        private static IEnumerable<Person> Women
+        {
+            get
+            {
+                return Seq(new Person {Surname = "Svensson", Forename = "Lisa"},
+                           new Person {Surname = "Karlsson", Forename = "Kerstin"});
+            }
+        }
 
-        readonly IEnumerable<Person> _men = new[] {new Person{Surname = "Svensson", Forename = "Karl"},
-                                                   new Person{Surname = "Karlsson", Forename = "Sven"}};
+        private static IEnumerable<Person> Men
+        {
+            get
+            {
+                return Seq(new Person { Surname = "Svensson", Forename = "Karl" },
+                           new Person { Surname = "Karlsson", Forename = "Sven" });
+            }
+        } 
+
+        private static IEnumerable<Person> People
+        {
+            get
+            {
+                return Women.Concat(Men);
+            }
+        }
+
+        private static IEnumerable<string> SurNames
+        {
+            get { return People.Select(person => person.Surname).Distinct(); }
+        }
 
         [Test]
         public void Join()
         {
-            var relations2 = _women.Join(_men,
-                                         wife => wife.Surname, husband => husband.Surname, //joinkey selectors
-                                         (wife, husband) => new { Wife = wife, Husband = husband }//projection
-                );
-            //{ Wife = { Forename = Lisa, SurName = Svensson }, Husband = { Forename = Karl, SurName = Svensson } }
-            //{ Wife = { Forename = Kerstin, SurName = Karlsson }, Husband = { Forename = Sven, SurName = Karlsson } }
+            var spouses = from wife in Women
+                          join husband in Men on wife.Surname equals husband.Surname
+                          select new Spouses { Wife = wife, Husband = husband }; 
 
-            var relations = from wife in _women
-                            join husband in _men on wife.Surname equals husband.Surname
-                            select new { Husband = husband, Wife = wife };
+            //{ Husband = { Forename = "Karl", SurName = "Svensson" }, Wife = { Forename = "Lisa", SurName = "Svensson" } }
+            //{ Husband = { Forename = "Sven", SurName = "Karlsson" }, Wife = { Forename = "Kerstin", SurName = "Karlsson" } }
+            spouses = Women.Join(Men,
+                                 wife => wife.Surname, husband => husband.Surname, //joinkey selectors
+                                 (wife, husband) => new Spouses { Wife = wife, Husband = husband }//projection
+                                 );
 
-            relations2.ForEach(Console.WriteLine);
+            spouses.ForEach(Console.WriteLine);
         }
 
         [Test]
         public void GroupJoin()
         {
-            var people = _women.Concat(_men);
-            var surNames = people.Select(person => person.Surname).Distinct();
-
-            var families = from surname in surNames
-                           join person in people on surname equals person.Surname
-                               into family
+            var families = from surname in SurNames
+                           join person in People on surname equals person.Surname
+                           into family
                            select family;
 
-            families = surNames.GroupJoin(people, surname => surname, person => person.Surname, (surname, family) => family);
+            families = SurNames.GroupJoin(People, 
+                                          surname => surname, person => person.Surname, //joinkey selectors
+                                          (surname, family) => family);//projection
 
             //{
             //  {
@@ -293,7 +318,17 @@ namespace CSharp3._080_Linq
             public string Surname;
             public override string ToString()
             {
-                return string.Format("{{ Forename = {0}, SurName = {1} }}", Forename, Surname);
+                return string.Format("{{ Forename = \"{0}\", SurName = \"{1}\" }}", Forename, Surname);
+            }
+        }
+
+        private class Spouses
+        {
+            public Person Wife;
+            public Person Husband;
+            public override string ToString()
+            {
+                return string.Format("{{ Husband = {0}, Wife = {1} }}", Husband, Wife);
             }
         }
         #endregion
