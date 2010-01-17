@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using NUnit.Framework;
 using CSharp3._050_ExtensionMethods;
 
-namespace CSharp3._080_Linq._010_ExtensionMethods
+namespace CSharp3._080_Linq
 {
     [TestFixture]
     public class _20_QueryableDemo

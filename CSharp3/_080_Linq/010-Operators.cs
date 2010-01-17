@@ -5,7 +5,7 @@ using CSharp3._050_ExtensionMethods;
 using CSharp3.Util;
 using NUnit.Framework;
 
-namespace CSharp3._080_Linq._010_ExtensionMethods
+namespace CSharp3._080_Linq
 {
     [TestFixture]
     public class FundamentalOperators : NUnitTestBase
@@ -95,7 +95,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
                              };
 
             things.OrderBy(thing => thing.P1)
-                  .ThenBy(thing => thing.P2);
+                .ThenBy(thing => thing.P2);
             //{ P1 = 1, P2 = 1 }
             //{ P1 = 1, P2 = 2 }
             //{ P1 = 2, P2 = 1 }
@@ -209,8 +209,8 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
             even = (from number in 1.Through(4)
                     group number by isEven(number)
                     into grouped 
-                    where grouped.Key
-                    select grouped).Single();//2,4
+                        where grouped.Key
+                        select grouped).Single();//2,4
         }
 
         #endregion
@@ -227,9 +227,9 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         public void Join()
         {
             var relations2 = _women.Join(_men,
-                                        wife => wife.Surname, husband => husband.Surname, //joinkey selectors
-                                        (wife, husband) => new { Wife = wife, Husband = husband }//projection
-                                        );
+                                         wife => wife.Surname, husband => husband.Surname, //joinkey selectors
+                                         (wife, husband) => new { Wife = wife, Husband = husband }//projection
+                );
             //{ Wife = { Forename = Lisa, SurName = Svensson }, Husband = { Forename = Karl, SurName = Svensson } }
             //{ Wife = { Forename = Kerstin, SurName = Karlsson }, Husband = { Forename = Sven, SurName = Karlsson } }
 
@@ -248,7 +248,7 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
 
             var families = from surname in surNames
                            join person in people on surname equals person.Surname
-                           into family
+                               into family
                            select family;
 
             families = surNames.GroupJoin(people, surname => surname, person => person.Surname, (surname, family) => family);
