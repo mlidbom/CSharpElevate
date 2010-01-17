@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CSharp3._050_ExtensionMethods;
@@ -8,7 +9,7 @@ using NUnit.Framework;
 namespace CSharp3._080_Linq
 {
     [TestFixture]
-    public class FundamentalOperators : NUnitTestBase
+    public class Operators : NUnitTestBase
     {
         private static IEnumerable<T> Seq<T>(params T[] elements)
         {
@@ -54,6 +55,17 @@ namespace CSharp3._080_Linq
         }
 
         #endregion
+
+        #endregion
+
+        #region conversion
+
+        [Test]
+        public void Cast()
+        {
+            IEnumerable<object> objects = Seq<object>(1, 2, 3);
+            IEnumerable<int> numbers = objects.Cast<int>();
+        }
 
         #endregion
 
