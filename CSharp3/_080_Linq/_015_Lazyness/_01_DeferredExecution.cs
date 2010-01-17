@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using NUnit.Framework;
+using CSharp3._050_ExtensionMethods;
 
 namespace CSharp3._080_Linq._015_Lazyness
 {
@@ -17,8 +18,7 @@ namespace CSharp3._080_Linq._015_Lazyness
                                             return me * me;
                                         };
 
-            //Neither range nor select cause iteration/evalutation. Few linq methods do.
-            var squares = Enumerable.Range(0, 9).Select(square);
+            var squares = 1.Through(10).Select(square);
             Assert.That(squareCalled, Is.False);
 
             //ToList as well as any other method that return a concrete type rather than 

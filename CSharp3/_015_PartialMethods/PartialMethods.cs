@@ -9,12 +9,12 @@ namespace CSharp3._015_PartialMethods
     public partial class PartialMethods
     {
         partial void After();
-        partial void Before(); //A partial method with no definition will be removed by the compiler.
+        partial void Before(); //removed by the compiler.
 
         [Test]
         public void WillWorkEvenThoughOneMethodCalledDoesNotExist()
         {
-            Before(); //Calls to a partial method with no definition will be removed by the compiler.
+            Before(); //removed by the compiler.
             //Dostuff
             After();
         }

@@ -58,10 +58,18 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         public void Distinct()
         {
             var distinct = Seq(1, 1, 2, 2).Distinct(); //1,2
-
             #region asserts
             Assert.That(distinct, Is.EqualTo(Seq(1, 2)));
             #endregion
+        }
+
+        [Test]
+        public void OfType()
+        {
+            var numbers = Seq<object>(1, 2, 3.0, 4.0);
+            var integers = numbers.OfType<int>();//1,2
+                       
+            Assert.That(integers.ToList(), Is.EqualTo(Seq(1,2)));
         }
 
         #endregion
@@ -71,12 +79,13 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         [Test]
         public void SelectProjects()
         {
-            var doubleOf1Through4 = 1.Through(4).Select(me => me*2);
-            Assert.That(doubleOf1Through4, Is.EqualTo(Seq(2, 4, 6, 8)));
+            var doubleOf1Through4 = 1.Through(2).Select(me => me*2);//2,4
+            Assert.That(doubleOf1Through4, Is.EqualTo(Seq(2, 4)));
 
-            doubleOf1Through4 = from number in 1.Through(4)
+            doubleOf1Through4 = from number in 1.Through(2)
                                 select number*2;
-            Assert.That(doubleOf1Through4, Is.EqualTo(Seq(2, 4, 6, 8)));
+            
+            Assert.That(doubleOf1Through4, Is.EqualTo(Seq(2, 4)));
         }
 
         [Test]
@@ -84,10 +93,11 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         {
             var oneThrough4Grouped = Seq(Seq(1, 2), Seq(3, 4));
             var oneThrough4Sequential = oneThrough4Grouped.SelectMany(me => me);
+
             Assert.That(oneThrough4Sequential, Is.EqualTo(Seq(1, 2, 3, 4)));
 
-            oneThrough4Sequential = from URDU in oneThrough4Grouped
-                                    from child in URDU
+            oneThrough4Sequential = from grouping in oneThrough4Grouped
+                                    from child in grouping
                                     select child;
             Assert.That(oneThrough4Sequential, Is.EqualTo(Seq(1, 2, 3, 4)));
         }

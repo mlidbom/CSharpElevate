@@ -35,32 +35,33 @@ namespace CSharp3._030_Initializers
         {
             var arr = new int[] {1, 2, 3, 4};
             var youCanOmmitTheType = new[] {1, 2, 3, 4};
+            int[] youCanOmmitTheLotIfYouTypeTheVariable = { 1, 2, 3, 4 };
         }
 
         [Test]
         public void CollectionInitialization()
         {
-            var ints = new List<List<int>>
-                       {
-                           new List<int> {1, 2, 3, 4, 5},
-                           new List<int> {1, 2, 3, 4, 5}
-                       };
-
             var people = new List<Person>
                          {
                              new Person {ForeName = "1"},
                              new Person {ForeName = "2"}
                          };
+
+            var ints = new List<List<int>>
+                       {
+                           new List<int> {1, 2, 3, 4, 5},
+                           new List<int> {1, 2, 3, 4, 5}
+                       };
         }
 
         [Test]
         public void DictionaryInitialization()
         {
-            var squares = new Dictionary<string, int>
+            var squares = new Dictionary<int, int>
                           {
-                              {"1", 1},
-                              {"2", 4},
-                              {"4", 8}
+                              {1, 1},
+                              {2, 4},
+                              {4, 8}
                           };
         }
     }

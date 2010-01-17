@@ -6,7 +6,6 @@ namespace CSharp3._020_AutoImplementedProperties
     public class AutoImplementedProperties
     {
         private string Private { get; set; }
-        protected string Protected { get; set; }
         protected string MixedModifiers { get; private set; }
 
         [Test]
