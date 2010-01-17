@@ -1,43 +1,50 @@
 using System;
 using System.IO;
+using System.Linq;
 using CSharp3.Extensions.IO;
 using NUnit.Framework;
 
 namespace CSharp3._001_Intro
 {
     /// <summary>
-    /// There is an elephant in the room. A large problem with the way 
-    /// that we write software. 
+    /// There is an elephant in the room. 
     /// 
-    /// We are breaking the DRY principle of SOLID badly with 
+    /// We are breaking the DRY and SRP principles of SOLID with 
     /// most every function we write. 
-    /// 
-    /// The elephant is the constant reimplementation 
-    /// of generic algorithms. We do it again and again, numb
-    /// from years of doing it because we had no no good alternative. NOW WE DO!
     /// 
     /// </summary>
     [TestFixture]
     public class TheElephantInTheRoom
     {
-        #region The wrong way
+        #region setup
 
-private static long SizeOfDirectoryClassic(string directory)
-{
-    long result = 0;
-    var subDirectories = Directory.GetDirectories(directory);
-    foreach (var subDirectory in subDirectories)
-    {
-        result += SizeOfDirectoryClassic(subDirectory);
-    }
+        private readonly DirectoryInfo DesktopDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop).AsDirectory();
 
-    var files = Directory.GetFiles(directory);
-    foreach (var file in files)
-    {
-        result += new FileInfo(file).Length;
-    }
-    return result;
-}
+        #endregion
+
+        #region A bad way
+
+        private static long SizeOfDirectoryClassic(DirectoryInfo directory)
+        {
+            long result = 0;
+            var subDirectories = directory.GetDirectories();
+            foreach (var subDirectory in subDirectories)
+            {
+                result += SizeOfDirectoryClassic(subDirectory);
+            }
+
+            var files = directory.GetFiles();
+            foreach (var file in files)
+            {
+                result += file.Length;
+            }
+            return result;
+        }
+
+        private void UseClassic()
+        {
+            var directorySize = SizeOfDirectoryClassic(DesktopDirectory);
+        }
 
         #region And what's wrong with that?
 
@@ -51,11 +58,9 @@ private static long SizeOfDirectoryClassic(string directory)
         //
         //violates: SRP, DRY and OCP
         //
-        //domain is implicit: string, array etc
+        //Multipurpose lines makes reading harder
         //
-        //Multipurpose lines
-        //
-        //temporary variables
+        //temporary variables makes reading harder
 
         #endregion
 
@@ -63,22 +68,29 @@ private static long SizeOfDirectoryClassic(string directory)
 
         #region A better way
 
-        private static long SizeOfDirectoryAcceptable(string path)
+        [Test]
+        private void UseAcceptableVersion()
         {
-            //inlined
-            return path.AsDirectory().Size();
+            var directorySize = DesktopDirectory.Size();
         }
+
+        //Good code reads as a description of it's task.
+        //For all files recursively fetched down from the directory, sum their sizes.
+        public static long Size(/*this*/ DirectoryInfo directory)
+        {
+            return directory.FilesResursive()
+                .Sum(file => file.Length);
+        }               
 
         #endregion
 
-        #region Yes it works
+        #region Tests
 
         [Test]
         public void BothReturnNonSeroSizesThatAreTheSame()
         {
-            var directory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            var sizeClassic = SizeOfDirectoryClassic(directory);
-            var sizeAcceptable = SizeOfDirectoryAcceptable(directory);
+            var sizeClassic = SizeOfDirectoryClassic(DesktopDirectory);
+            var sizeAcceptable = DesktopDirectory.Size();
 
             Assert.That(sizeClassic, Is.EqualTo(sizeAcceptable));
             Console.WriteLine(sizeAcceptable); //Compare with total commander...            

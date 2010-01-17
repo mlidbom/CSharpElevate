@@ -115,8 +115,8 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
         [Test]
         public void RememberMe()
         {
-            ADirectory.AsHierarchy(Directory.GetDirectories).Flatten()
-                .SelectMany(dir => Directory.GetFiles(dir.Wrapped))
+            ADirectory.AsHierarchy(Directory.GetDirectories).FlattenHierarchy()
+                .SelectMany(dir => Directory.GetFiles(dir.Decorated))
                 .Sum(file => new FileInfo(file).Length)
                 .Do(Console.WriteLine);
 
@@ -126,11 +126,11 @@ namespace CSharp3._080_Linq._010_ExtensionMethods
             //Recursive tree walk. Finds all folders below and including "folder" 
             //by recursively calling Directory.GetDirectories
             //and yielding each one
-            var sizeOfFolder = ADirectory.AsHierarchy(Directory.GetDirectories).Flatten()
+            var sizeOfFolder = ADirectory.AsHierarchy(Directory.GetDirectories).FlattenHierarchy()
 
                 //transforms the IEnumerable of folder names into an 
                 //IEnumerable of string[]with all the files in each folder
-                .Select(currentDirectory => Directory.GetFiles(currentDirectory.Wrapped))
+                .Select(currentDirectory => Directory.GetFiles(currentDirectory.Decorated))
 
                 //flattens the IEnumerable of string[] into an IEnumerable of string
                 .SelectMany(files => files)

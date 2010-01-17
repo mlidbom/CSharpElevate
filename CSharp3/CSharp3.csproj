@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\Hierarchies\Hierarchy.cs" />
+    <Compile Include="Extensions\Hierarchies\HierarchyDecorator.cs" />
     <Compile Include="Extensions\Hierarchies\IHierarchy.cs" />
     <Compile Include="Extensions\IO\DirectoryInfoEx.cs" />
     <Compile Include="Extensions\Linq\Zipping.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="_080_Linq\_010_ExtensionMethods\020_QueryableDemo.cs" />
     <Compile Include="_080_Linq\_015_Lazyness\_02_MakeTheImpossiblePossible.cs" />
     <Compile Include="_090_PrinciplesViaSolid\_010_UseAndCreateClosures\Closure.cs" />
+    <Compile Include="_100_PuttingItAllTogether\ATaleOfFoldersDirectoriesAndDecorators.cs" />
     <Compile Include="_200_MindBenders\_005_LinqTricks.cs" />
     <Compile Include="_200_MindBenders\010-TheMagicalPowerOfClosures.cs" />
     <Compile Include="_090_PrinciplesViaSolid\_020_PreferUsingVar\BecauseYouWantToReduceCouplingAndMaintainAgility.cs" />
