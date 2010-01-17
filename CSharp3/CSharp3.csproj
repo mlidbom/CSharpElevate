@@ -79,7 +79,7 @@
     <Compile Include="_200_Extra_Credit\005_LinqTricks.cs" />
     <Compile Include="_200_Extra_Credit\020-TheMagicalPowerOfClosures.cs" />
     <Compile Include="_090_PrinciplesViaSolid\_020_PreferUsingVar\BecauseYouWantToReduceCouplingAndMaintainAgility.cs" />
-    <Compile Include="_080_Linq\_010_ExtensionMethods\010-WithExtentionMethods.cs" />
+    <Compile Include="_080_Linq\_010_ExtensionMethods\010-Operators.cs" />
     <Compile Include="_080_Linq\_015_Lazyness\_01_DeferredExecution.cs" />
     <Compile Include="_080_Linq\_020_ComprehensionSyntax\SelectStatement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
