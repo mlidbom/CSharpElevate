@@ -8,47 +8,42 @@ namespace CSharp4._050_Dynamic
     [TestFixture]
     public class _010_Dynamic
     {
+        [Test]
+        public void ThrowsExceptionAtRuntimeWhenCallingNonexistingMethods()
+        {
+            dynamic myObject = new int();
+            Assert.Throws<RuntimeBinderException>(() => myObject.OperationThatDoesNotExist());
+        }
+
+        #region HasFullCSharpSemantics
+
+        #region calls to
+
         class MyDynamic
         {
             public int Return(int value) { return value; }
-            public string  Return(string value) { return value; }
+            public string Return(string value) { return value; }
             public object Return(object value) { return value; }
 
             public string Format(object value1 = null, object value2 = null, object value3 = null)
             {
-                return string.Format("{0},{1},{2}", value1, value2, value3);   
+                return string.Format("{0},{1},{2}", value1, value2, value3);
             }
         }
 
         [Test]
-        public void ThrowsExceptionAtRuntimeWhenCallingNonexistingMethods()
+        public void CallsToDynamicResolvesAsWithStaticType()
         {
-            dynamic myObject = new MyDynamic();
-            Assert.Throws<RuntimeBinderException>(() => myObject.OperationThatDoesNotExist());
-        }       
-
-        [Test]
-        public void HasFullCSharpSemantics()
-        {
-            dynamic myObject = new MyDynamic();
-            //Calls to dynamic type resolve as with static types.
-            Assert.That(myObject.Return(1), Is.EqualTo(1));
-            Assert.That(myObject.Return("hi"), Is.EqualTo("hi"));
-            Assert.That(myObject.Return(myObject), Is.EqualTo(myObject));
-            Assert.That(myObject.Format(value2: "value2"), Is.EqualTo(",value2,"));
-
-            dynamic dynamic1 = 1;
-            dynamic dynamicHi = "hi";
-            dynamic dynamicObject = new object();
-            dynamic dynamicValue2 = "value2";
-
-            Assert.That(Return(dynamic1), Is.EqualTo(1));
-            Assert.That(Return(dynamicHi), Is.EqualTo("hi"));
-            Assert.That(Return(dynamicObject), Is.EqualTo(dynamicObject));
-            Assert.That(Format(value2:dynamicValue2), Is.EqualTo(",value2,"));
-
-            //Calls with dynamic type resolve as with static types.
+            dynamic myDynamic = new MyDynamic();
+            Assert.That(myDynamic.Return(1), Is.EqualTo(1));
+            Assert.That(myDynamic.Return("hi"), Is.EqualTo("hi"));
+            Assert.That(myDynamic.Return(myDynamic), Is.EqualTo(myDynamic));
+            Assert.That(myDynamic.Format(value2: "value2"), Is.EqualTo(",value2,"));
         }
+
+        #endregion
+
+        #region calls with
 
         private static int Return(int value) { return value; }
         private static string Return(string value) { return value; }
@@ -57,5 +52,25 @@ namespace CSharp4._050_Dynamic
         {
             return string.Format("{0},{1},{2}", value1, value2, value3);
         }
+
+        [Test]
+        public void CallsWithDynamicResolveAsWithStaticType()
+        {
+            dynamic dynamic1 = 1;
+            dynamic dynamicHi = "hi";
+            dynamic dynamicObject = new object();
+            dynamic dynamicValue2 = "value2";
+
+            //Calls with dynamic type resolve as with static types.
+            Assert.That(Return(dynamic1), Is.EqualTo(1));
+            Assert.That(Return(dynamicHi), Is.EqualTo("hi"));
+            Assert.That(Return(dynamicObject), Is.EqualTo(dynamicObject));
+            Assert.That(Format(value2: dynamicValue2), Is.EqualTo(",value2,"));
+        }
+
+        #endregion
+
+        #endregion
+
     }    
 }
