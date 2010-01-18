@@ -20,7 +20,7 @@ namespace CSharp4._050_Dynamic
         public void ContrastedWith30()
         {
             //3.0 style
-            object objectDynamic = MyDynamic.GetInstance();
+            object objectDynamic = MyDynamic.GetInstance();//Com or DLR object...
             Type type = objectDynamic.GetType();
             object result = type.InvokeMember("Return",
                      BindingFlags.InvokeMethod,
