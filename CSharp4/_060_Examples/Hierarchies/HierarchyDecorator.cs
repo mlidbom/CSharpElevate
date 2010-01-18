@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using CSharp4._020_GenericVariance.Examples.Decorator;
+using CSharp4._060_Examples.Decorator;
 
-namespace CSharp4._020_GenericVariance.Examples.Hierarchies
+namespace CSharp4._060_Examples.Hierarchies
 {
     public interface IHierarchyDecorator<out T> : IHierarchy<IHierarchyDecorator<T>>, IDecorator<T>
     {
@@ -17,7 +17,7 @@ namespace CSharp4._020_GenericVariance.Examples.Hierarchies
 
             public IEnumerable<IHierarchyDecorator<T>> Children
             {
-                get { return _childGetter(Decorated).Selectctect(child => child.AsHierarchy(_childGetter)); }
+                get { return _childGetter(Decorated).Select(child => child.AsHierarchy(_childGetter)); }
             }
 
             public T Decorated { get; private set; }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CSharp4._020_GenericVariance.Examples.Hierarchies
+namespace CSharp4._060_Examples.Hierarchies
 {
     public interface IHierarchy<out T> where T : IHierarchy<T>
     {

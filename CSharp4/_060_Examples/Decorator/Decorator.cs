@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CSharp4._020_GenericVariance.Examples.Decorator
+namespace CSharp4._060_Examples.Decorator
 {
     public static class Decorator
     {        

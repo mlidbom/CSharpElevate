@@ -1,4 +1,4 @@
-﻿namespace CSharp4._020_GenericVariance.Examples.Decorator
+﻿namespace CSharp4._060_Examples.Decorator
 {
     public interface IDecorator<out T>
     {

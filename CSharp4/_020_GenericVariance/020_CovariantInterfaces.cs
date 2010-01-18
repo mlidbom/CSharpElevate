@@ -1,4 +1,4 @@
-using CSharp4._020_GenericVariance.Examples.Decorator;
+using CSharp4._060_Examples.Decorator;
 using NUnit.Framework;
 
 namespace CSharp4._020_GenericVariance
