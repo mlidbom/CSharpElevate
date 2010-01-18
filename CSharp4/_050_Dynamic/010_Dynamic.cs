@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Microsoft.CSharp.RuntimeBinder;
 using NUnit.Framework;
 
@@ -13,6 +14,24 @@ namespace CSharp4._050_Dynamic
         {
             dynamic myObject = new int();
             Assert.Throws<RuntimeBinderException>(() => myObject.OperationThatDoesNotExist());
+        }
+
+        [Test]
+        public void ContrastedWith30()
+        {
+            //3.0 style
+            object objectDynamic = MyDynamic.GetInstance();
+            Type type = objectDynamic.GetType();
+            object result = type.InvokeMember("Return",
+                     BindingFlags.InvokeMethod,
+                     null,
+                     objectDynamic,
+                     new object[] { 1 });
+            Assert.That(Convert.ToInt32(result), Is.EqualTo(1));
+
+            //4.0 style
+            dynamic myDynamic = MyDynamic.GetInstance();
+            Assert.That(myDynamic.Return(1), Is.EqualTo(1));
         }
 
         #region HasFullCSharpSemantics
@@ -29,12 +48,19 @@ namespace CSharp4._050_Dynamic
             {
                 return string.Format("{0},{1},{2}", value1, value2, value3);
             }
+
+            private MyDynamic(){}
+
+            public static object GetInstance()
+            {
+                return new MyDynamic();
+            }
         }
 
         [Test]
         public void CallsToDynamicResolvesAsWithStaticType()
         {
-            dynamic myDynamic = new MyDynamic();
+            dynamic myDynamic = MyDynamic.GetInstance();
             Assert.That(myDynamic.Return(1), Is.EqualTo(1));
             Assert.That(myDynamic.Return("hi"), Is.EqualTo("hi"));
             Assert.That(myDynamic.Return(myDynamic), Is.EqualTo(myDynamic));
