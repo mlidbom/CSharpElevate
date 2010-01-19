@@ -104,7 +104,7 @@ namespace CSharp3._200_Extra_Credit
 
         //C# is not a bit noisy huh? Would you look at those type definitions!
 
-        //Here's the same in F# with the twist that these pairs are once again 
+        //Here's the same in F# with the twist that these pairs are once again
         //fully generic and closed over the set of all objects:
         //
         //  let MakePair =  fun first second -> fun selector -> selector first second
