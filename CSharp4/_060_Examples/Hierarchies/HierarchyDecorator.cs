@@ -5,7 +5,8 @@ using CSharp4._060_Examples.Decorator;
 
 namespace CSharp4._060_Examples.Hierarchies
 {    
-    public interface IHierarchyDecorator<out T> : IHierarchy<IHierarchyDecorator<T>>, IDecorator<T> {}
+    public interface IHierarchyDecorator<out T> : 
+        IHierarchy<IHierarchyDecorator<T>>, IDecorator<T> {}
 
     public static class HierarchyDecorator
     {

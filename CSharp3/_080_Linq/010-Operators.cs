@@ -21,7 +21,7 @@ namespace CSharp3._080_Linq
         {
             1.Through(4).Where(number => number > 2); //3,4
 
-            var oddsIn1Through4 = from number in 1.Through(4)
+            var greaterThan2 = from number in 1.Through(4)
                                   where number > 2
                                   select number; //3,4
         }
@@ -37,6 +37,7 @@ namespace CSharp3._080_Linq
         {
             var numbers = Seq<object>(1, 2, 3.0, 4.0);
             numbers.OfType<int>(); //1,2                       
+            //numbers.Cast<int>().ToArray();
         }
 
         #region partitioning operators
@@ -48,7 +49,7 @@ namespace CSharp3._080_Linq
 
             numbers.Skip(1); //2,3
             numbers.SkipWhile(num => num < 3); //3
-            numbers.Take(1); //1
+            numbers.Take(2); //1,2
             numbers.TakeWhile(num => num < 3); //1,2
         }
 
@@ -145,8 +146,8 @@ namespace CSharp3._080_Linq
         [Test]
         public void AggregateAggregatesAndTransforms()
         {
-            var names = Seq("Calle", "Oscar");
-            names.Aggregate((aggregate, file) => aggregate + "," + file); //"Calle,Oscar"
+            var names = Seq("Calle", "Oscar", "Sverre");
+            names.Aggregate((aggregate, file) => aggregate + "," + file); //"Calle,Oscar,Sverre"
         }
 
         #endregion
@@ -179,6 +180,7 @@ namespace CSharp3._080_Linq
             oneAndTwo.Except(twoAndThree); //1
             oneAndTwo.Union(twoAndThree); //1,2,3
             oneAndTwo.Intersect(twoAndThree); //2
+            oneAndTwo.Concat(twoAndThree);//1,2,2,3
         }
 
         #endregion
@@ -189,7 +191,7 @@ namespace CSharp3._080_Linq
         public void ElementOperators()
         {
             var oneThrough3 = 1.Through(3);
-            var one = new[] {1};
+            var one = Seq(1);
             var empty = Enumerable.Empty<object>();
 
             oneThrough3.First(); //1
@@ -272,8 +274,7 @@ namespace CSharp3._080_Linq
 //{ Husband = { Forename = "Sven", SurName = "Karlsson" }, Wife = { Forename = "Kerstin", SurName = "Karlsson" } }
             spouses = Women.Join(Men,
                                  wife => wife.Surname,
-                                 husband => husband.Surname,
-                                 //joinkey selectors
+                                 husband => husband.Surname,//joinkey selectors
                                  (wife, husband) => new Spouses {Wife = wife, Husband = husband}
                 //projection
                 );

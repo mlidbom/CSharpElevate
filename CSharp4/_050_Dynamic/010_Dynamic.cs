@@ -28,6 +28,7 @@ namespace CSharp4._050_Dynamic
                      null,
                      objectDynamic,
                      new object[] { 1 });
+
             Assert.That(Convert.ToInt32(result), 
                         Is.EqualTo(1));
 

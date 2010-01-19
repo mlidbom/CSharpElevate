@@ -21,7 +21,8 @@ namespace CSharp3._080_Linq
             var squares = 1.Through(10).Select(square);
             Assert.That(squareCalled, Is.False);
 
-            //ToList as well as any other method that return a concrete type rather than 
+            //ToList as well as any other method that return a 
+            //concrete type rather than 
             //an interface will cause iteration
             //All operators that return IEnumerable<T> are lazy.
             squares.ToList();

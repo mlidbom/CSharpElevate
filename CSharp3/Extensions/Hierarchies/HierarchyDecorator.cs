@@ -15,7 +15,7 @@ namespace CSharp3.Extensions.Hierarchies
         public static IHierarchyDecorator<T> AsHierarchy<T>(this T me,
                                                             Func<T, IEnumerable<T>> childGetter)
         {
-            return new FiealdBackedHierarchyDecorator<T>(me, childGetter);
+            return new FieldBackedHierarchyDecorator<T>(me, childGetter);
         }
 
         public static IEnumerable<T> FlattenHierarchy<T>(this T me,
@@ -34,7 +34,7 @@ namespace CSharp3.Extensions.Hierarchies
         }
 
         //private inner class
-        private class FiealdBackedHierarchyDecorator<T> : IHierarchyDecorator<T>
+        private class FieldBackedHierarchyDecorator<T> : IHierarchyDecorator<T>
         {
             private readonly Func<T, IEnumerable<T>> _childGetter;
 
@@ -48,7 +48,7 @@ namespace CSharp3.Extensions.Hierarchies
 
             public T Decorated { get; private set; }
 
-            public FiealdBackedHierarchyDecorator(T nodeValue, Func<T, IEnumerable<T>> childGetter)
+            public FieldBackedHierarchyDecorator(T nodeValue, Func<T, IEnumerable<T>> childGetter)
             {
                 Decorated = nodeValue;
                 _childGetter = childGetter;

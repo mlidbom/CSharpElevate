@@ -75,7 +75,8 @@ namespace CSharp3._001_Intro
         }
 
         //Good code reads as a description of it's task.
-        //For all files recursively fetched down from the directory, sum their sizes.
+        //For all files recursively fetched down from the directory, 
+        //sum their sizes.
         public static long Size(/*this*/ DirectoryInfo directory)
         {
             return directory.FilesResursive()
