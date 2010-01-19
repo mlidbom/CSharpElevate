@@ -26,6 +26,8 @@ namespace CSharp3._090_PrinciplesViaSolid._020_PreferUsingVar
             Func<IList<int>> intIListFetcher = () => integers;
             Func<IEnumerable<int>> intEnumerableFetcher = () => integers;
             Func<IEnumerable<object>> objectEnumerableFetcher = () => integers.Cast<object>();                                  
+            
+            //Note the type
             Func<Iterator> iteratorFetcher = () => new Iterator(integers);
 
             var printObjectFetcher =

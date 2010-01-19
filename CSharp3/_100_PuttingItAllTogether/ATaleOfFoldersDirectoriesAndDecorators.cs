@@ -9,7 +9,10 @@ namespace CSharp3._100_PuttingItAllTogether
     public class ATaleOfFoldersDirectoriesAndDecorators
     {
         #region setup
-        private readonly DirectoryInfo DesktopDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop).AsDirectory();
+
+        private static readonly DirectoryInfo DesktopDirectory =
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop).AsDirectory();
+
         #endregion
 
         [Test]
@@ -23,7 +26,7 @@ namespace CSharp3._100_PuttingItAllTogether
             //Every class, interface, and method has a single well defined responsibility.
 
             //Note the correlation between responsibility and code
-            long directorySize = DesktopDirectory.Size();
+            var directorySize = DesktopDirectory.Size();
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using CSharp3.Extensions.Hierarchies;
+using CSharp4._060_Examples.Hierarchies;
 
 namespace CSharp3.Extensions.IO
 {
@@ -15,7 +15,7 @@ namespace CSharp3.Extensions.IO
         public static long Size(this DirectoryInfo directory)
         {
             return directory
-                .FilesResursive()//Coding by wishful thinking.
+                .FilesResursive() //Coding by wishful thinking.
                 .Sum(file => file.Length);
         }
 

@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 
-namespace CSharp3._200_MindBenders
+namespace CSharp3._200_Extra_Credit
 {
     [TestFixture]
     public class FunctionsWithState
@@ -10,7 +10,7 @@ namespace CSharp3._200_MindBenders
         public void MeansFunctionsCanHaveState()
         {
             var counter = CreateCounter();
-            for (int i = 1; i <= 5; i++)
+            for (var i = 1; i <= 5; i++)
             {
                 Assert.That(counter(), Is.EqualTo(i));
             }
@@ -18,7 +18,7 @@ namespace CSharp3._200_MindBenders
 
         private static Func<int> CreateCounter()
         {
-            int count = 0;
+            var count = 0;
             return () => ++count;
         }
     }

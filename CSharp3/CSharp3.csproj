@@ -75,7 +75,7 @@
     <Compile Include="_100_PuttingItAllTogether\TestingNumbersForBeingPrime.cs" />
     <Compile Include="_200_Extra_Credit\010_FunctionsWithState.cs" />
     <Compile Include="_200_Extra_Credit\005_LinqTricks.cs" />
-    <Compile Include="_200_Extra_Credit\020-TheMagicalPowerOfClosures.cs" />
+    <Compile Include="_200_Extra_Credit\040-TheMagicalPowerOfClosures.cs" />
     <Compile Include="_090_PrinciplesViaSolid\_020_PreferUsingVar\BecauseYouWantToReduceCouplingAndMaintainAgility.cs" />
     <Compile Include="_080_Linq\010-Operators.cs" />
     <Compile Include="_080_Linq\015_DeferredExecution.cs" />

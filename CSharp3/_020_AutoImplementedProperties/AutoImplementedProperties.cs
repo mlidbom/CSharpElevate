@@ -12,7 +12,8 @@ namespace CSharp3._020_AutoImplementedProperties
         public void WorkExaclyAsNormalProperties()
         {
             Private = "hi";
-            Assert.That(Private, Is.EqualTo("hi"));
+            Assert.That(Private,
+                        Is.EqualTo("hi"));
         }
     }
 }

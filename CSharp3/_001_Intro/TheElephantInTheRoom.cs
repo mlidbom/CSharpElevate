@@ -7,7 +7,6 @@ using NUnit.Framework;
 namespace CSharp3._001_Intro
 {
     /// <summary>
-    /// There is an elephant in the room. 
     /// 
     /// We are breaking the DRY and SRP principles of SOLID with 
     /// most every function we write. 
@@ -18,7 +17,8 @@ namespace CSharp3._001_Intro
     {
         #region setup
 
-        private readonly DirectoryInfo DesktopDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop).AsDirectory();
+        private readonly DirectoryInfo DesktopDirectory = 
+            Environment.GetFolderPath(Environment.SpecialFolder.Desktop).AsDirectory();
 
         #endregion
 

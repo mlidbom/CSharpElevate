@@ -17,52 +17,55 @@ namespace CSharp3._030_Initializers
         public void ObjectInitialization()
         {
             var me = new Person
-                     {
-                         ForeName = "Magnus", SurName = "Lidbom",
-                         Father = new Person
-                                  {
-                                      ForeName = "Lars", SurName = "Lidbom",
-                                      Father = new Person
-                                               {
-                                                   ForeName = "Tage", SurName = "Lidbom"
-                                               }
-                                  }
-                     };
+                         {
+                             ForeName = "Magnus",
+                             SurName = "Lidbom",
+                             Father = new Person
+                                          {
+                                              ForeName = "Lars",
+                                              SurName = "Lidbom",
+                                              Father = new Person
+                                                           {
+                                                               ForeName = "Tage",
+                                                               SurName = "Lidbom"
+                                                           }
+                                          }
+                         };
         }
 
         [Test]
         public void Arrayinitialization()
         {
-            var arr = new int[] {1, 2, 3, 4};
+            var arr = new[] {1, 2, 3, 4};
             var youCanOmmitTheType = new[] {1, 2, 3, 4};
-            int[] youCanOmmitTheLotIfYouTypeTheVariable = { 1, 2, 3, 4 };
+            int[] youCanOmmitTheLotIfYouTypeTheVariableAsArray = {1, 2, 3, 4};
         }
 
         [Test]
         public void CollectionInitialization()
         {
             var people = new List<Person>
-                         {
-                             new Person {ForeName = "1"},
-                             new Person {ForeName = "2"}
-                         };
+                             {
+                                 new Person {ForeName = "1"},
+                                 new Person {ForeName = "2"}
+                             };
 
             var ints = new List<List<int>>
-                       {
-                           new List<int> {1, 2, 3, 4, 5},
-                           new List<int> {1, 2, 3, 4, 5}
-                       };
+                           {
+                               new List<int> {1, 2, 3, 4, 5},
+                               new List<int> {1, 2, 3, 4, 5}
+                           };
         }
 
         [Test]
         public void DictionaryInitialization()
         {
             var squares = new Dictionary<int, int>
-                          {
-                              {1, 1},
-                              {2, 4},
-                              {4, 8}
-                          };
+                              {
+                                  {1, 1},
+                                  {2, 4},
+                                  {4, 8}
+                              };
         }
     }
 }

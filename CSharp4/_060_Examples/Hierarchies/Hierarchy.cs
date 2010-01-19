@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using CSharp4._060_Examples.Linq;
 
 namespace CSharp4._060_Examples.Hierarchies
 {
@@ -21,14 +22,6 @@ namespace CSharp4._060_Examples.Hierarchies
             return roots
                 .SelectMany(root => root.Children.FlattenHierarchy())
                 .Concat(roots);
-        }
-    }
-
-    public static class Seq
-    {
-        public static IEnumerable<T> New<T>(params T[] values)
-        {
-            return values;
         }
     }
 }

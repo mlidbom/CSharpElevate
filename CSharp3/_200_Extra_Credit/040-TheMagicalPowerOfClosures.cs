@@ -1,7 +1,7 @@
 using System;
 using NUnit.Framework;
 
-namespace CSharp3._200_MindBenders
+namespace CSharp3._200_Extra_Credit
 {
     /// <summary>
     /// 
@@ -34,15 +34,18 @@ namespace CSharp3._200_MindBenders
         [Test]
         public void TheSetOfPairsIsIsClosedOverTheOpertionOfMakePair()
         {
-            var twoAndFourAndEightAndSixteen = MakePair(MakePair(2, 4), MakePair(8, 16)); //What is the type?
+            var twoAndFourAndEightAndSixteen = MakePair(MakePair(2, 4), MakePair(8, 16));
+            //What is the type?
             Assert.That(Second(Second(twoAndFourAndEightAndSixteen)), Is.EqualTo(16));
             Assert.That(First(Second(twoAndFourAndEightAndSixteen)), Is.EqualTo(8));
             Assert.That(First(First(twoAndFourAndEightAndSixteen)), Is.EqualTo(2));
             Assert.That(Second(First(twoAndFourAndEightAndSixteen)), Is.EqualTo(4));
         }
 
-        //Does it matter what the type of twoAndFour is if it satisfies the contract specified by the above rules?
-        //Maybe not knowing the type can actually be an advantage, It removes unnesserary detail, the essence of abstracting.
+        //Does it matter what the type of twoAndFour is if it satisfies the 
+        //contract specified by the above rules?
+        //Maybe not knowing the type can actually be an advantage, 
+        //It removes unnesserary detail, the essence of abstracting.
 
         #region Magic!
 
@@ -90,9 +93,14 @@ namespace CSharp3._200_MindBenders
 
         #region Deep woodoo
 
-        private readonly Func<int, int, Func<Func<int, int, int>, int>> MakePair = (first, second) => selector => selector(first, second);
-        private readonly Func<Func<Func<int, int, int>, int>, int> First = pair => pair((first, _) => first);
-        private readonly Func<Func<Func<int, int, int>, int>, int> Second = pair => pair((_, second) => second);
+        private readonly Func<int, int, Func<Func<int, int, int>, int>> MakePair =
+            (first, second) => selector => selector(first, second);
+
+        private readonly Func<Func<Func<int, int, int>, int>, int> First =
+            pair => pair((first, _) => first);
+
+        private readonly Func<Func<Func<int, int, int>, int>, int> Second =
+            pair => pair((_, second) => second);
 
         //C# is not a bit noisy huh? Would you look at those type definitions!
 

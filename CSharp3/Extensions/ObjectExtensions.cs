@@ -16,7 +16,8 @@ namespace CSharp3.Extensions
         /// <summary>
         /// Applies a transformation to any object. 
         /// </summary>
-        public static TReturn Transform<TSource, TReturn>(this TSource me, Func<TSource, TReturn> transform)
+        public static TReturn Transform<TSource, TReturn>(this TSource me,
+                                                          Func<TSource, TReturn> transform)
         {
             return transform(me);
         }

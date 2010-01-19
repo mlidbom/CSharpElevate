@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CSharp3.Util.Linq
+namespace CSharp3.Extensions.Linq
 {
     public static class Seq
     {

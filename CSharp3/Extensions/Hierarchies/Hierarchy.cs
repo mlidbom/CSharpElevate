@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using CSharp3.Util.Linq;
+using CSharp3.Extensions.Linq;
 
 namespace CSharp3.Extensions.Hierarchies
 {

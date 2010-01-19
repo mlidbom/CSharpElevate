@@ -2,12 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using CSharp3.Extensions;
-using CSharp3.Util;
-using CSharp3.Util.Linq;
-using NUnit.Framework;
 using CSharp3._050_ExtensionMethods;
+using CSharp3.Extensions;
 using CSharp3.Extensions.IO;
+using CSharp3.Extensions.Linq;
+using NUnit.Framework;
 
 namespace CSharp3._200_Extra_Credit
 {
@@ -32,7 +31,6 @@ namespace CSharp3._200_Extra_Credit
     /// to close it over operations.
     /// </summary>
     /// 
-
     public static class Closures
     {
         public static IEnumerable<T> SkipOneForEvery<T>(this IEnumerable<T> me, int interval)
@@ -61,7 +59,7 @@ namespace CSharp3._200_Extra_Credit
             //play together completely seamlessly because they close over the set 
             //of all IEnumerable.
             return me.Zip(me.Skip(1))
-                     .SkipOneForEvery(1);
+                .SkipOneForEvery(1);
         }
 
         /// <summary>Executes action with me as the parameter.</summary>
@@ -81,7 +79,9 @@ namespace CSharp3._200_Extra_Credit
         }
 
         [Test]
-        public void TransformAndDoAllowsYouToWriteThingsInTheOrderTheyShouldBeExecutedWithoutUsingTemporaryVariables()
+        public void
+            TransformAndDoAllowsYouToWriteThingsInTheOrderTheyShouldBeExecutedWithoutUsingTemporaryVariables
+            ()
         {
             //task: print a comma separated list of the names of the files on your Desktop                        
             var aDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -97,7 +97,7 @@ namespace CSharp3._200_Extra_Credit
                 fileNames[i] = files[i].Name;
             }
             var commaSeparatedFiles = string.Join(",", fileNames.ToArray());
-            Console.WriteLine(commaSeparatedFiles);            
+            Console.WriteLine(commaSeparatedFiles);
 
             #region comments
 
@@ -112,7 +112,7 @@ namespace CSharp3._200_Extra_Credit
             //look up what value a variable contains
 
             #endregion
-            
+
             #endregion
 
             //Let's try it with Linq only. None of my extensions:       
@@ -143,10 +143,10 @@ namespace CSharp3._200_Extra_Credit
 
             //Now let's try it using lambdas and my extension methods 
             aDirectory.AsDirectory()
-                      .GetFiles()
-                      .Select(me => me.Name)
-                      .Transform(me => string.Join(",", me.ToArray()))
-                      .Do(Console.WriteLine);
+                .GetFiles()
+                .Select(me => me.Name)
+                .Transform(me => string.Join(",", me.ToArray()))
+                .Do(Console.WriteLine);
 
             #region comments
 

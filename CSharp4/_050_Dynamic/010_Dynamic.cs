@@ -13,7 +13,8 @@ namespace CSharp4._050_Dynamic
         public void ThrowsExceptionAtRuntimeWhenCallingNonexistingMethods()
         {
             dynamic myObject = new int();
-            Assert.Throws<RuntimeBinderException>(() => myObject.OperationThatDoesNotExist());
+            Assert.Throws<RuntimeBinderException>(() => 
+                myObject.OperationThatDoesNotExist());
         }
 
         [Test]

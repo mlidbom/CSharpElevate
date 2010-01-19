@@ -10,7 +10,8 @@ namespace CSharp3._070_LambdaExpressions
         public void SimpleUsage()
         {
             Func<int, int> square = param => param*param;
-            Assert.That(square(2), Is.EqualTo(4));
+            Assert.That(square(2),
+                        Is.EqualTo(4));
         }
 
         [Test]
@@ -22,25 +23,29 @@ namespace CSharp3._070_LambdaExpressions
 
             //You have only given a name to a function,
             //not executed anything.
-            Assert.That(theInt, Is.EqualTo(0));
+            Assert.That(theInt,
+                        Is.EqualTo(0));
 
 
-            Assert.That(increment(), Is.EqualTo(1));
+            Assert.That(increment(),
+                        Is.EqualTo(1));
 
             //the original variable is changed.
-            Assert.That(theInt, Is.EqualTo(1));
+            Assert.That(theInt,
+                        Is.EqualTo(1));
         }
 
         [Test]
         public void ExtendsLifetimeOfCapturedVariables()
         {
             var get5 = CreateIntGetter(5);
-            Assert.That(get5(), Is.EqualTo(5));
+            Assert.That(get5(),
+                        Is.EqualTo(5));
         }
 
         private static Func<int> CreateIntGetter(int i)
         {
             return () => i;
-        }    
+        }
     }
 }

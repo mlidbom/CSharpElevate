@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using CSharp3._050_ExtensionMethods;
-using CSharp3.Extensions;
-using CSharp3.Util;
 using NUnit.Framework;
 
 namespace CSharp3._080_Linq
@@ -39,7 +36,7 @@ namespace CSharp3._080_Linq
         public void OfType()
         {
             var numbers = Seq<object>(1, 2, 3.0, 4.0);
-            numbers.OfType<int>();//1,2                       
+            numbers.OfType<int>(); //1,2                       
         }
 
         #region partitioning operators
@@ -47,11 +44,11 @@ namespace CSharp3._080_Linq
         [Test]
         public void PartioningOperators()
         {
-            var numbers = 1.Through(3);//1,2,3
+            var numbers = 1.Through(3); //1,2,3
 
             numbers.Skip(1); //2,3
-            numbers.SkipWhile(num => num < 3);//3
-            numbers.Take(1);//1
+            numbers.SkipWhile(num => num < 3); //3
+            numbers.Take(1); //1
             numbers.TakeWhile(num => num < 3); //1,2
         }
 
@@ -64,8 +61,8 @@ namespace CSharp3._080_Linq
         [Test]
         public void Cast()
         {
-            IEnumerable<object> objects = Seq<object>(1, 2, 3);
-            IEnumerable<int> numbers = objects.Cast<int>();
+            var objects = Seq<object>(1, 2, 3);
+            var numbers = objects.Cast<int>();
         }
 
         #endregion
@@ -75,29 +72,29 @@ namespace CSharp3._080_Linq
         [Test]
         public void Select()
         {
-            var doubleOf1Through4 = 1.Through(2).Select(me => me*2);//2,4
+            var doubleOf1Through4 = 1.Through(2).Select(me => me*2); //2,4
 
             doubleOf1Through4 = from number in 1.Through(2)
-                                select number*2;//2,4           
+                                select number*2; //2,4           
         }
 
         [Test]
         public void SelectManyProjectsAndFlattens()
         {
-            var oneThrough4Grouped = Seq(Seq(1, 2), Seq(3, 4));//{{1,2},{3,4}}
-            oneThrough4Grouped.SelectMany(me => me);//{1,2,3,4}
+            var oneThrough4Grouped = Seq(Seq(1, 2), Seq(3, 4)); //{{1,2},{3,4}}
+            oneThrough4Grouped.SelectMany(me => me); //{1,2,3,4}
 
             var unGrouped = from grouping in oneThrough4Grouped
                             from child in grouping
-                            select child;//{1,2,3,4}
+                            select child; //{1,2,3,4}
         }
 
         #endregion
 
-        #region sorting operators
+        #region ordering operators
 
         [Test]
-        public void OrderByAndThenBy()
+        public void Ordering()
         {
             var things = new[]
                              {
@@ -112,11 +109,13 @@ namespace CSharp3._080_Linq
             //{ P1 = 1, P2 = 1 }
             //{ P1 = 1, P2 = 2 }
             //{ P1 = 2, P2 = 1 }
-            //{ P1 = 2, P2 = 2 }
+            //{ P1 = 2, P2 = 2 }            
 
             var sortedThings = from thing in things
-                               orderby thing.P1, thing.P2
+                               orderby thing.P1 , thing.P2
                                select thing;
+
+            sortedThings.Reverse(); //Can you guess?
         }
 
         #endregion
@@ -127,6 +126,9 @@ namespace CSharp3._080_Linq
         public void BasicAggregationOperators()
         {
             var oneThrough4 = 1.Through(4);
+
+            oneThrough4.Count();//4:int
+            oneThrough4.LongCount();//4:long
 
             oneThrough4.Min(); //1                        
             oneThrough4.Max(); //4            
@@ -156,12 +158,12 @@ namespace CSharp3._080_Linq
         {
             var oneThrough3 = 1.Through(3);
 
-            oneThrough3.Contains(2);//true
-            
-            oneThrough3.Any();//true
-            oneThrough3.Any(number => number > 4);//false
+            oneThrough3.Contains(2); //true
 
-            oneThrough3.All(number => number <= 3);//true
+            oneThrough3.Any(); //true
+            oneThrough3.Any(number => number > 4); //false
+
+            oneThrough3.All(number => number <= 3); //true
         }
 
         #endregion
@@ -174,9 +176,9 @@ namespace CSharp3._080_Linq
             var oneAndTwo = 1.Through(2);
             var twoAndThree = 2.Through(3);
 
-            oneAndTwo.Except(twoAndThree);//1
-            oneAndTwo.Union(twoAndThree);//1,2,3
-            oneAndTwo.Intersect(twoAndThree);//2
+            oneAndTwo.Except(twoAndThree); //1
+            oneAndTwo.Union(twoAndThree); //1,2,3
+            oneAndTwo.Intersect(twoAndThree); //2
         }
 
         #endregion
@@ -190,17 +192,17 @@ namespace CSharp3._080_Linq
             var one = new[] {1};
             var empty = Enumerable.Empty<object>();
 
-            oneThrough3.First();//1
-            oneThrough3.FirstOrDefault();//1;
+            oneThrough3.First(); //1
+            oneThrough3.FirstOrDefault(); //1;
             empty.FirstOrDefault(); //null
 
-            oneThrough3.Last();//3
-            oneThrough3.LastOrDefault();//3;
+            oneThrough3.Last(); //3
+            oneThrough3.LastOrDefault(); //3;
 
-            oneThrough3.ElementAt(1);//2
+            oneThrough3.ElementAt(1); //2
 
-            one.Single();//1
-            empty.SingleOrDefault();//null
+            one.Single(); //1
+            empty.SingleOrDefault(); //null
 
             Assert.Throws<InvalidOperationException>(() => oneThrough3.Single());
             Assert.Throws<InvalidOperationException>(() => oneThrough3.SingleOrDefault());
@@ -213,18 +215,18 @@ namespace CSharp3._080_Linq
         [Test]
         public void GroupBy()
         {
-            Func<int, bool> isEven = me => me%2 == 0;           
+            Func<int, bool> isEven = me => me%2 == 0;
 
             var even = 1.Through(4)
-                        .GroupBy(isEven)
-                        .Where(grouping => grouping.Key)
-                        .Single();//{2,4}
+                .GroupBy(isEven)
+                .Where(grouping => grouping.Key)
+                .Single(); //{2,4}
 
             even = (from number in 1.Through(4)
                     group number by isEven(number)
-                    into grouped 
-                        where grouped.Key
-                        select grouped).Single();//2,4
+                    into grouped
+                    where grouped.Key
+                    select grouped).Single(); //2,4
         }
 
         #endregion
@@ -244,17 +246,14 @@ namespace CSharp3._080_Linq
         {
             get
             {
-                return Seq(new Person { Surname = "Svensson", Forename = "Karl" },
-                           new Person { Surname = "Karlsson", Forename = "Sven" });
+                return Seq(new Person {Surname = "Svensson", Forename = "Karl"},
+                           new Person {Surname = "Karlsson", Forename = "Sven"});
             }
-        } 
+        }
 
         private static IEnumerable<Person> People
         {
-            get
-            {
-                return Women.Concat(Men);
-            }
+            get { return Women.Concat(Men); }
         }
 
         private static IEnumerable<string> SurNames
@@ -267,14 +266,17 @@ namespace CSharp3._080_Linq
         {
             var spouses = from wife in Women
                           join husband in Men on wife.Surname equals husband.Surname
-                          select new Spouses { Wife = wife, Husband = husband }; 
+                          select new Spouses {Wife = wife, Husband = husband};
 
-            //{ Husband = { Forename = "Karl", SurName = "Svensson" }, Wife = { Forename = "Lisa", SurName = "Svensson" } }
-            //{ Husband = { Forename = "Sven", SurName = "Karlsson" }, Wife = { Forename = "Kerstin", SurName = "Karlsson" } }
+//{ Husband = { Forename = "Karl", SurName = "Svensson" }, Wife = { Forename = "Lisa", SurName = "Svensson" } }
+//{ Husband = { Forename = "Sven", SurName = "Karlsson" }, Wife = { Forename = "Kerstin", SurName = "Karlsson" } }
             spouses = Women.Join(Men,
-                                 wife => wife.Surname, husband => husband.Surname, //joinkey selectors
-                                 (wife, husband) => new Spouses { Wife = wife, Husband = husband }//projection
-                                 );
+                                 wife => wife.Surname,
+                                 husband => husband.Surname,
+                                 //joinkey selectors
+                                 (wife, husband) => new Spouses {Wife = wife, Husband = husband}
+                //projection
+                );
 
             spouses.ForEach(Console.WriteLine);
         }
@@ -287,9 +289,10 @@ namespace CSharp3._080_Linq
                            into family
                            select family;
 
-            families = SurNames.GroupJoin(People, 
-                                          surname => surname, person => person.Surname, //joinkey selectors
-                                          (surname, family) => family);//projection
+            families = SurNames.GroupJoin(People,
+                                          surname => surname,
+                                          person => person.Surname,//joinkey selectors
+                                          (surname, family) => family); //projection
 
             //{
             //  {
@@ -305,21 +308,18 @@ namespace CSharp3._080_Linq
 
         #endregion
 
-
-
-
-
-
-
-
         #region support
+
         private class Person
         {
             public string Forename;
             public string Surname;
+
             public override string ToString()
             {
-                return string.Format("{{ Forename = \"{0}\", SurName = \"{1}\" }}", Forename, Surname);
+                return string.Format("{{ Forename = \"{0}\", SurName = \"{1}\" }}",
+                                     Forename,
+                                     Surname);
             }
         }
 
@@ -327,11 +327,13 @@ namespace CSharp3._080_Linq
         {
             public Person Wife;
             public Person Husband;
+
             public override string ToString()
             {
                 return string.Format("{{ Husband = {0}, Wife = {1} }}", Husband, Wife);
             }
         }
+
         #endregion
     }
 }

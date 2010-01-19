@@ -28,7 +28,7 @@ namespace CSharp3._075_ActionFunc
         public void ShouldAlwaysBeUsedBecauseOfCompatibilityIssues()
         {
             IntPredicate largerThan5Predicate = param => param > 5;
-            Func<int,bool> largerThan5Func = param => param > 5;
+            Func<int, bool> largerThan5Func = param => param > 5;
 
             IEnumerable<int> sixThroughTen;
             // Compile time error. IntPredicate not compatible with Func<int,bool> that Where takes

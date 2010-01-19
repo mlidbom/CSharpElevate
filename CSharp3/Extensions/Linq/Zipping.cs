@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 
-namespace CSharp3.Util.Linq
+namespace CSharp3.Extensions.Linq
 {
     public static class Zipping
     {
-        public static IEnumerable<TResult> Zip<TFirst, TSecond, TResult>(this IEnumerable<TFirst> first, IEnumerable<TSecond> second,
-                                                                         Func<TFirst, TSecond, TResult> selector)
+        public static IEnumerable<TResult> Zip<TFirst, TSecond, TResult>(
+            this IEnumerable<TFirst> first,
+            IEnumerable<TSecond> second,
+            Func<TFirst, TSecond, TResult>
+                selector)
         {
             using (var firstEnum = first.GetEnumerator())
             {
@@ -20,7 +23,9 @@ namespace CSharp3.Util.Linq
             }
         }
 
-        public static IEnumerable<Pair<TFirst, TSecond>> Zip<TFirst, TSecond>(this IEnumerable<TFirst> first, IEnumerable<TSecond> second)
+        public static IEnumerable<Pair<TFirst, TSecond>> Zip<TFirst, TSecond>(
+            this IEnumerable<TFirst> first,
+            IEnumerable<TSecond> second)
         {
             return first.Zip(second, (fst, snd) => new Pair<TFirst, TSecond>(fst, snd));
         }
