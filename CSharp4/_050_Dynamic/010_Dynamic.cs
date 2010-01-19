@@ -28,11 +28,13 @@ namespace CSharp4._050_Dynamic
                      null,
                      objectDynamic,
                      new object[] { 1 });
-            Assert.That(Convert.ToInt32(result), Is.EqualTo(1));
+            Assert.That(Convert.ToInt32(result), 
+                        Is.EqualTo(1));
 
             //4.0 style
             dynamic myDynamic = MyDynamic.GetInstance();
-            Assert.That(myDynamic.Return(1), Is.EqualTo(1));
+            Assert.That(myDynamic.Return(1), 
+                        Is.EqualTo(1));
         }
 
         #region HasFullCSharpSemantics
