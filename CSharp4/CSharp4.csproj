@@ -52,6 +52,7 @@
     <Compile Include="_030_Parameters\_010_Named.cs" />
     <Compile Include="_030_Parameters\_020_Optional.cs" />
     <Compile Include="_050_Dynamic\010_Dynamic.cs" />
+    <Compile Include="_060_Examples\IO\DirectoryInfoEx.cs" />
     <Compile Include="_060_Examples\Linq\Seq.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
