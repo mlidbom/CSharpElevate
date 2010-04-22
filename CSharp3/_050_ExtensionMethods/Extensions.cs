@@ -5,6 +5,7 @@ using NUnit.Framework;
 namespace CSharp3._050_ExtensionMethods
 {
     //Class hosting extension methods must be static
+    //and non-nested
     public static class Extensions
     {
         ///the "this" keyword marks a parameter as being the equivalent 
