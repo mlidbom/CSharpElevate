@@ -55,6 +55,8 @@ namespace CSharp3._070_LambdaExpressions
 
             Assert.That(four, Is.EqualTo(4));
         }
+
+        //Here we are! Utvecklarforum 1
     
         //Queryable....
     }

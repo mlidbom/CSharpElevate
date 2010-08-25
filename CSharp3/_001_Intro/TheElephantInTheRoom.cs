@@ -69,7 +69,7 @@ namespace CSharp3._001_Intro
         #region A better way
 
         [Test]
-        private void UseAcceptableVersion()
+        public void UseAcceptableVersion()
         {
             var directorySize = DesktopDirectory.Size();
         }
