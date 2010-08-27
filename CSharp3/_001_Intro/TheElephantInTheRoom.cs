@@ -43,12 +43,12 @@ namespace CSharp3._001_Intro
 
         private void UseClassic()
         {
-            var directorySize = SizeOfDirectoryClassic(DesktopDirectory);
+            var directorySize = TheElephantInTheRoom.SizeOfDirectoryClassic(DesktopDirectory);
         }
 
         #region And what's wrong with that?
 
-        // Code should do one thing at a time in clear and easy to read steps.        
+        // Code should do one thing at a time in clear and easy to read steps.
         //        
         // Wheels reinvented and merged above: 
         //  Recursive descent
@@ -61,6 +61,8 @@ namespace CSharp3._001_Intro
         //Multipurpose lines makes reading harder
         //
         //temporary variables makes reading harder
+        //
+        // Discoverability is quite poor. How do you know that this method exists and where?
 
         #endregion
 
